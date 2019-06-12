@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Questions
 Route::get('/questions', 'QuestionsController@index')->name('questions.index');
+Route::get('/questions/{question}', 'QuestionsController@show')->name('questions.show');
