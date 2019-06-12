@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
+    // Relationships to eager load
+    protected $with = ['owner'];
+
     protected static function boot()
     {
         parent::boot();
