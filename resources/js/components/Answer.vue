@@ -8,6 +8,10 @@
                 {{ answer.body }}
             </p>
         </div>
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-danger btn-sm" @click="destroy">Delete</button>
+        </div>
     </div>
 </template>
 
@@ -21,13 +25,25 @@
 
         data() {
             return {
-
+                id: this.answer.id
             }
         },
 
         computed: {
             ago() {
-                return moment(this.answer.created_at).fromNow() + '...';
+                return moment.utc(this.answer.created_at).fromNow() + '...';
+            }
+        },
+
+        methods: {
+            // delete the answer
+            destroy() {
+                axios.delete('/answers/' + this.id)
+                    .then(() => {
+                        // fire deletedAnswer event so that
+                        // the answer is also removed from the DOM
+                        this.$emit('deletedAnswer');
+                    })
             }
         }
     }

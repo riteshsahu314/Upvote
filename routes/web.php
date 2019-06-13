@@ -22,3 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Questions
 Route::get('/questions', 'QuestionsController@index')->name('questions.index');
 Route::get('/questions/{question}', 'QuestionsController@show')->name('questions.show');
+
+// Ansewers
+Route::get('/questions/{question}/answers', 'AnswersController@index');
+Route::post('/questions/{question}/answers', 'AnswersController@store');
+Route::delete('/answers/{answer}', 'AnswersController@destroy');

@@ -53,3 +53,12 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+
+window.events = new Vue();
+
+// flash function to fire a 'flash' event
+// this function can be used anywhere to fire a 'flash' event
+window.flash = function (message, type = 'success') {
+    window.events.$emit('flash', { message, type });
+};

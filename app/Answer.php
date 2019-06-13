@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
+    // Allow Mass Assignment
+    protected $guarded = [];
+
     // Relationships to eager load
     protected $with = ['owner'];
 

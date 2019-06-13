@@ -17,7 +17,7 @@
                         </div>
                     </div>
 
-                    <answers :answers="{{ $question->answers }}"></answers>
+                    <answers></answers>
                 </div>
             </div>
         </div>
