@@ -20,5 +20,11 @@ class UsersSeeder extends Seeder
             'name' => 'Ritesh',
             'email' => 'ritesh@example.com',
         ]);
+
+        // create a another dev user
+        factory(User::class)->create([
+            'name' => 'Pooja',
+            'email' => 'pooja@example.com',
+        ]);
     }
 }

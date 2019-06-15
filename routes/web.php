@@ -21,9 +21,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Questions
 Route::get('/questions', 'QuestionsController@index')->name('questions.index');
+Route::post('/questions', 'QuestionsController@store')->name('questions.store');
+Route::get('/questions/create', 'QuestionsController@create')->name('questions.create');
 Route::get('/questions/{question}', 'QuestionsController@show')->name('questions.show');
 
-// Ansewers
+// Answers
 Route::get('/questions/{question}/answers', 'AnswersController@index');
 Route::post('/questions/{question}/answers', 'AnswersController@store');
 Route::delete('/answers/{answer}', 'AnswersController@destroy');
+Route::patch('/answers/{answer}', 'AnswersController@update');

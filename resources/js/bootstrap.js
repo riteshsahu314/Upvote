@@ -54,6 +54,28 @@ if (token) {
 //     encrypted: true
 // });
 
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
+window.Vue = require('vue');
+
+Vue.prototype.signedIn = window.App.signedIn;
+
+let authorizations = require('./authorizations');
+
+Vue.prototype.authorize = function(...params) {
+    // if not signed in return false
+    if (! window.App.signedIn) return false;
+
+    // authorize the user
+    if (typeof params[0] == 'string') {
+        return authorizations[params[0]](params[1]);
+    }
+};
+
 
 window.events = new Vue();
 

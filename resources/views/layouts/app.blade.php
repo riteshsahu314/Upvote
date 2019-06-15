@@ -12,6 +12,7 @@
     <!-- Scripts -->
     <script>
         window.App = {!! json_encode([
+            'user' => Auth::user(),
             'signedIn' => Auth::check()
         ]) !!};
     </script>

@@ -8,6 +8,7 @@
                           rows="5"
                           placeholder="Have something to say ?"
                           v-model="body"
+                          required
                 >
                 </textarea>
             </div>

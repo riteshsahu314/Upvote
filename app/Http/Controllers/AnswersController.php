@@ -9,13 +9,21 @@ use Illuminate\Http\Request;
 class AnswersController extends Controller
 {
     /**
+     * AnswersController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Question $question)
     {
-        return $question->answers()->paginate(2);
+        return $question->answers()->paginate(10);
     }
 
     /**
@@ -84,7 +92,15 @@ class AnswersController extends Controller
      */
     public function update(Request $request, Answer $answer)
     {
-        //
+        $this->authorize('update', $answer);
+
+        $request->validate([
+            'body' => 'required'
+        ]);
+
+        $answer->update([
+            'body' => $request->body
+        ]);
     }
 
     /**
@@ -95,6 +111,8 @@ class AnswersController extends Controller
      */
     public function destroy(Answer $answer)
     {
+        $this->authorize('update', $answer);
+
         $answer->delete();
     }
 }
