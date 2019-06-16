@@ -53,7 +53,11 @@ class QuestionPolicy
      */
     public function update(User $user, Question $question)
     {
-        //
+        if ($user->isAdmin) {
+            return true;
+        }
+
+        return $user->id == $question->user_id;
     }
 
     /**

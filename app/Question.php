@@ -8,6 +8,15 @@ class Question extends Model
 {
     protected $guarded = [];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($question) {
+            $question->answers->each->delete();
+        });
+    }
+
     public function path()
     {
         return '/questions/' . $this->id;

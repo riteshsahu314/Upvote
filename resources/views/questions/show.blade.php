@@ -15,6 +15,16 @@
                                 {{ $question->body }}
                             </p>
                         </div>
+
+                        @can('update', $question)
+                            <div class="card-footer">
+                                <form method="post" action="{{ route('questions.destroy', $question) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-link btn-sm float-right">DELETE</button>
+                                </form>
+                            </div>
+                        @endcan
                     </div>
 
                     <answers></answers>

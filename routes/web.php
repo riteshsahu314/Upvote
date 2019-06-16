@@ -24,6 +24,7 @@ Route::get('/questions', 'QuestionsController@index')->name('questions.index');
 Route::post('/questions', 'QuestionsController@store')->name('questions.store');
 Route::get('/questions/create', 'QuestionsController@create')->name('questions.create');
 Route::get('/questions/{question}', 'QuestionsController@show')->name('questions.show');
+Route::delete('/questions/{question}', 'QuestionsController@destroy')->name('questions.destroy');
 
 // Answers
 Route::get('/questions/{question}/answers', 'AnswersController@index');
