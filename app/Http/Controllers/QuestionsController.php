@@ -90,7 +90,14 @@ class QuestionsController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        $this->authorize('update', $question);
+
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        $question->update($request->all());
     }
 
     /**
