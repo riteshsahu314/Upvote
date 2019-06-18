@@ -44,6 +44,11 @@ class User extends Authenticatable
      */
     protected $appends = ['isAdmin'];
 
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+
     public function isAdmin()
     {
         return in_array(

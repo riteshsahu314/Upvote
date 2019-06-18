@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Question extends Model
 {
@@ -17,11 +18,20 @@ class Question extends Model
         static::deleting(function ($question) {
             $question->answers->each->delete();
         });
+
+        static::created(function ($question){
+            $question->update(['slug' => $question->title]);
+        });
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
     public function path()
     {
-        return '/questions/' . $this->id;
+        return '/questions/' . $this->slug;
     }
     
     public function owner()
@@ -37,5 +47,16 @@ class Question extends Model
     public function addAnswer($answer)
     {
         return $this->answers()->create($answer);
+    }
+
+    public function setSlugAttribute($value)
+    {
+        $slug = Str::slug($value);
+
+        if (static::whereSlug($slug)->exists()) {
+            $slug = "${slug}-" . $this->id;
+        }
+
+        $this->attributes['slug'] = $slug;
     }
 }
