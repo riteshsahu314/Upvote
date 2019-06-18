@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
+    use RecordsActivity;
+
     protected $guarded = [];
 
     protected static function boot()

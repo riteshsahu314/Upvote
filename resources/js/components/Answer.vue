@@ -1,7 +1,7 @@
 <template>
     <div class="card mb-3">
         <div class="card-header">
-            <h5>{{ answer.owner.name }} answered {{ ago }}</h5>
+            <h5><a :href="'/' + answer.owner.id">{{ answer.owner.name }}</a> answered {{ ago }}</h5>
         </div>
         <div class="card-body">
             <div v-if="editing">

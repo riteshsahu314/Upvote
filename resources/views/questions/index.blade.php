@@ -10,7 +10,12 @@
                             <h4>
                                 <a href="{{ $question->path() }}">{{ $question->title }}</a>
                             </h4>
-                            <h5>Asked By: {{ $question->owner->name }}</h5>
+                            <h5>
+                                Asked By:
+                                <a href="{{ route('users.show', $question->owner) }}">
+                                    {{ $question->owner->name }}
+                                </a>
+                            </h5>
                             <p>
                                 <a href="{{ $question->path() }}">
                                     {{ $question->answers_count }} {{ Str::plural('answer', $question->answers_count) }}

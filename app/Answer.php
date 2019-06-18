@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
+    use RecordsActivity;
+
     // Allow Mass Assignment
     protected $guarded = [];
 
