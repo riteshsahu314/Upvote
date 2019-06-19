@@ -1,8 +1,9 @@
 <script>
     import Answers from '../components/Answers.vue';
+    import Favorite from '../components/Favorite.vue';
 
     export default {
-        components: { Answers },
+        components: { Answers, Favorite },
 
         props: ['question'],
 

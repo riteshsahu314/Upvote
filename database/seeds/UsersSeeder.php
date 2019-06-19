@@ -3,6 +3,7 @@
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 
 class UsersSeeder extends Seeder
 {
@@ -13,6 +14,8 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
+
         User::truncate();
 
         // create a dev user
@@ -26,5 +29,7 @@ class UsersSeeder extends Seeder
             'name' => 'Pooja',
             'email' => 'pooja@example.com',
         ]);
+
+        Schema::enableForeignKeyConstraints();
     }
 }

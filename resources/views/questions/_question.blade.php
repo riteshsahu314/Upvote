@@ -23,9 +23,12 @@
 
 {{-- Viewing the Question --}}
 <div class="card mb-3" v-else>
-    <div class="card-header">
-        <h4 v-text="title"></h4>
-        <h5>Asked By: <a href="{{ route('users.show', $question->owner) }}">{{ $question->owner->name }}</a></h5>
+    <div class="card-header d-flex justify-content-between">
+        <div class="">
+            <h4 v-text="title"></h4>
+            <h5>Asked By: <a href="{{ route('users.show', $question->owner) }}">{{ $question->owner->name }}</a></h5>
+        </div>
+        <favorite :question="{{ $question }}"></favorite>
     </div>
     <div class="card-body" v-text="body"></div>
 

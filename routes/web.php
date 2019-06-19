@@ -35,3 +35,7 @@ Route::patch('/answers/{answer}', 'AnswersController@update');
 
 // Users
 Route::get('/{user}', 'UsersController@show')->name('users.show');
+
+// Favorites
+Route::post('/questions/{question}/favorites', 'FavoritesController@store');
+Route::delete('/questions/{question}/favorites', 'FavoritesController@destroy');

@@ -11,6 +11,8 @@ class Question extends Model
 
     protected $guarded = [];
 
+    protected $appends = ['isFavorited', 'favoritesCount'];
+
     protected static function boot()
     {
         parent::boot();
@@ -47,6 +49,46 @@ class Question extends Model
     public function addAnswer($answer)
     {
         return $this->answers()->create($answer);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany('App\Favorite');
+    }
+
+    public function isFavorited()
+    {
+        return !! $this->favorites()->where('user_id', auth()->id())->count();
+    }
+
+    public function getIsFavoritedAttribute()
+    {
+        return $this->isFavorited();
+    }
+
+    public function getFavoritesCountAttribute()
+    {
+        return $this->favorites()->count();
+    }
+
+    public function favorite()
+    {
+        $attributes =['user_id' => auth()->id()];
+
+        if (!$this->favorites()->where($attributes)->exists()) {
+            // this will prevent the user from favoriting a question more than once
+            $this->favorites()->create($attributes);
+        }
+    }
+
+    public function unfavorite()
+    {
+        $attributes =['user_id' => auth()->id()];
+
+        if ($this->favorites()->where($attributes)->exists()) {
+            // this will prevent the user from unfavoriting an unfavorited question
+            $this->favorites()->where($attributes)->delete();
+        }
     }
 
     public function setSlugAttribute($value)
