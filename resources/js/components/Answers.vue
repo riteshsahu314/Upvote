@@ -44,6 +44,14 @@
                 this.pageData = data;
 
                 this.items = this.pageData.data;
+
+                // push the best answer to the top in list
+                this.items.forEach(function (answer, index, answers) {
+                    if (answer.isBest) {
+                        answers.splice(index, 1);
+                        answers.unshift(answer);
+                    }
+                });
             },
 
             url(page) {

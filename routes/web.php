@@ -32,6 +32,7 @@ Route::get('/questions/{question}/answers', 'AnswersController@index');
 Route::post('/questions/{question}/answers', 'AnswersController@store');
 Route::delete('/answers/{answer}', 'AnswersController@destroy');
 Route::patch('/answers/{answer}', 'AnswersController@update');
+Route::post('/answers/{answer}/best', 'AnswersController@best');
 
 // Users
 Route::get('/{user}', 'UsersController@show')->name('users.show');

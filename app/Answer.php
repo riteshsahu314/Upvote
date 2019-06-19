@@ -14,6 +14,13 @@ class Answer extends Model
     // Relationships to eager load
     protected $with = ['owner'];
 
+    /**
+     * The accessors to append to the model's array or json form.
+     *
+     * @var array
+     */
+    protected $appends = ['isBest'];
+
     protected static function boot()
     {
         parent::boot();
@@ -31,5 +38,15 @@ class Answer extends Model
     public function question()
     {
         return $this->belongsTo('App\Question');
+    }
+
+    public function isBest()
+    {
+        return $this->question->best_answer_id == $this->id;
+    }
+
+    public function getIsBestAttribute()
+    {
+        return $this->isBest();
     }
 }

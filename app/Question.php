@@ -51,6 +51,11 @@ class Question extends Model
         return $this->answers()->create($answer);
     }
 
+    public function markBestAnswer(Answer $answer)
+    {
+        $this->update(['best_answer_id' => $answer->id]);
+    }
+
     public function favorites()
     {
         return $this->hasMany('App\Favorite');

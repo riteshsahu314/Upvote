@@ -20,7 +20,13 @@ class CreateQuestionsTable extends Migration
             $table->unsignedInteger('answers_count')->default(0);
             $table->string('title');
             $table->text('body');
+            $table->unsignedBigInteger('best_answer_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('best_answer_id')
+                ->references('id')
+                ->on('answers')
+                ->onDelete('set null');
         });
     }
 

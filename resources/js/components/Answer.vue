@@ -1,6 +1,6 @@
 <template>
     <div class="card mb-3">
-        <div class="card-header">
+        <div class="card-header" :class="isBest ? 'best' : ''">
             <h5><a :href="'/' + answer.owner.name">{{ answer.owner.name }}</a> answered {{ ago }}</h5>
         </div>
         <div class="card-body">
@@ -18,9 +18,15 @@
             <div v-else v-text="body"></div>
         </div>
 
-        <div class="card-footer" v-if="authorize('owns', answer)">
-            <button class="btn btn-secondary btn-sm mr-2" @click="editing = true">Edit</button>
-            <button type="submit" class="btn btn-danger btn-sm" @click="destroy">Delete</button>
+        <div class="card-footer d-flex justify-content-between"
+             v-if="authorize('owns', answer) || authorize('owns', answer.question)">
+            <div v-if="authorize('owns', answer)">
+                <button class="btn btn-secondary btn-sm mr-2" @click="editing = true">Edit</button>
+                <button type="submit" class="btn btn-danger btn-sm" @click="destroy">Delete</button>
+            </div>
+            <button class="btn btn-primary btn-sm" @click="markBestAnswer" v-if="authorize('owns', answer.question) && !isBest">
+                Best Answer
+            </button>
         </div>
     </div>
 </template>
@@ -37,8 +43,16 @@
             return {
                 id: this.answer.id,
                 body: this.answer.body,
-                editing: false
+                editing: false,
+                isBest: this.answer.isBest
             }
+        },
+
+        created() {
+            // listen for an event
+            window.events.$on('bestAnswerSelected', id => {
+                this.isBest = (id === this.id);
+            });
         },
 
         computed: {
@@ -60,7 +74,7 @@
 
             // update the answer
             update() {
-                axios.patch('/answers/' + this.id, { body: this.body })
+                axios.patch('/answers/' + this.id, {body: this.body})
                     .then(() => {
                         flash('Answer successfully updated!');
                     })
@@ -78,7 +92,23 @@
                 this.editing = false;
 
                 this.body = this.answer.body;
+            },
+
+            // Mark the answer as Best
+            markBestAnswer() {
+                axios.post('/answers/' + this.id + '/best')
+                    .then(() => {
+                        flash('Answer is marked as Best.');
+
+                        window.events.$emit('bestAnswerSelected', this.id);
+                    });
             }
         }
     }
 </script>
+
+<style scoped>
+    .best {
+        background-color: #b0ffaf;
+    }
+</style>

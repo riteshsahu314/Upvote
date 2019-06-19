@@ -115,4 +115,17 @@ class AnswersController extends Controller
 
         $answer->delete();
     }
+
+    /**
+     *  Mark the answer as Best Answer
+     *
+     * @param Answer $answer
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function best(Answer $answer)
+    {
+        $this->authorize('update', $answer->question);
+
+        $answer->question->markBestAnswer($answer);
+    }
 }
