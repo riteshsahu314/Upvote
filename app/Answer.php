@@ -53,6 +53,12 @@ class Answer extends Model
         return $this->morphMany(Comment::class, 'commentable');
     }
 
+
+    public function addComment($comment)
+    {
+        $this->comments()->create($comment);
+    }
+
     public function isBest()
     {
         return $this->question->best_answer_id == $this->id;

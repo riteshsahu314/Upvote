@@ -63,6 +63,7 @@ if (token) {
 window.Vue = require('vue');
 
 Vue.prototype.signedIn = window.App.signedIn;
+Vue.prototype.csrfToken = window.App.csrfToken;
 
 let authorizations = require('./authorizations');
 

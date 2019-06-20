@@ -65,6 +65,11 @@ class Question extends Model
         return $answer;
     }
 
+    public function addComment($comment)
+    {
+        $this->comments()->create($comment);
+    }
+
     public function markBestAnswer(Answer $answer)
     {
         $this->update(['best_answer_id' => $answer->id]);

@@ -13,7 +13,8 @@
     <script>
         window.App = {!! json_encode([
             'user' => Auth::user(),
-            'signedIn' => Auth::check()
+            'signedIn' => Auth::check(),
+            'csrfToken' => csrf_token()
         ]) !!};
     </script>
 

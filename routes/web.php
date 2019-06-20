@@ -34,6 +34,10 @@ Route::delete('/answers/{answer}', 'AnswersController@destroy');
 Route::patch('/answers/{answer}', 'AnswersController@update');
 Route::post('/answers/{answer}/best', 'AnswersController@best');
 
+// Comments
+Route::post('/questions/{question}/comments', 'QuestionCommentsController@store')->middleware('auth');
+Route::post('/answers/{answer}/comments', 'AnswerCommentsController@store')->middleware('auth');
+
 // Users
 Route::get('/{user}', 'UsersController@show')->name('users.show');
 

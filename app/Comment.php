@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    protected $guarded = [];
+
     // Relationships to eager load
     protected $with = ['owner'];
 

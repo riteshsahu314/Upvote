@@ -46,6 +46,19 @@
                 </li>
             @endforeach
         </ul>
+
+        @auth
+            <form action="{{ url("/questions/{$question->slug}/comments") }}" method="post">
+            @csrf
+
+                <!-- Form Input for Comment body-->
+                <div class="d-flex">
+                    <textarea class="form-control" style="min-height: 53px;" name="body" rows="1" placeholder="add a comment..."></textarea>
+
+                    <button type="submit" class="btn btn-primary align-self-start m-2">Publish</button>
+                </div>
+            </form>
+        @endauth
     </div>
 </div>
 

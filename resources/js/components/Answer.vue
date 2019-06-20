@@ -35,6 +35,17 @@
                     {{ comment.body }} - <a :href="'/' + comment.owner.name">{{ comment.owner.name }}</a>
                 </li>
             </ul>
+
+            <form :action="'/answers/' + id + '/comments'" method="post" v-if="signedIn">
+                <!-- Form Input for Comment body-->
+                <div class="d-flex">
+                    <input type="hidden" name="_token" :value="csrfToken">
+                    <textarea class="form-control" style="min-height: 53px;" name="body" rows="1"
+                              placeholder="add a comment..."></textarea>
+
+                    <button type="submit" class="btn btn-primary align-self-start m-2">Publish</button>
+                </div>
+            </form>
         </div>
     </div>
 </template>
