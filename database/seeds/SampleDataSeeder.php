@@ -1,6 +1,7 @@
 <?php
 
 use App\Answer;
+use App\Comment;
 use App\Question;
 use App\User;
 use Illuminate\Database\Seeder;
@@ -18,6 +19,7 @@ class SampleDataSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
         $this->questions();
         $this->answers();
+        $this->comments();
         Schema::enableForeignKeyConstraints();
     }
 
@@ -35,5 +37,14 @@ class SampleDataSeeder extends Seeder
 
         // create sample questions and users
         factory(Answer::class, 60)->states('from_existing_questions_and_users')->create();
+    }
+
+    public function comments()
+    {
+        Comment::truncate();
+
+        // create sample questions and users
+        factory(Comment::class, 60)->states('from_existing_questions_and_users')->create();
+        factory(Comment::class, 100)->states('from_existing_answers_and_users')->create();
     }
 }

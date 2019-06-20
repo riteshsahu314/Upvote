@@ -37,4 +37,16 @@
            <button class="btn btn-secondary btn-sm" @click="editing = true">Edit</button>
         </div>
     @endcan
+
+    <div>
+        <ul class="list-group">
+            @foreach($question->comments as $comment)
+                <li class="list-group-item">
+                    {{ $comment->body }} - <a href="{{ route('users.show', $comment->owner) }}">{{ $comment->owner->name }}</a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
 </div>
+
+

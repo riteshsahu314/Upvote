@@ -28,6 +28,14 @@
                 Best Answer
             </button>
         </div>
+
+        <div v-if="comments.length">
+            <ul class="list-group" v-for="comment in comments">
+                <li class="list-group-item">
+                    {{ comment.body }} - <a :href="'/' + comment.owner.name">{{ comment.owner.name }}</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -44,7 +52,8 @@
                 id: this.answer.id,
                 body: this.answer.body,
                 editing: false,
-                isBest: this.answer.isBest
+                isBest: this.answer.isBest,
+                comments: this.answer.comments
             }
         },
 

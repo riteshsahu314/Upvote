@@ -48,6 +48,14 @@ class Question extends Model
         return $this->hasMany(Answer::class);
     }
 
+    /**
+     * Get all of the question's comments.
+     */
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
     public function addAnswer($answer)
     {
         $answer = $this->answers()->create($answer);

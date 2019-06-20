@@ -12,7 +12,7 @@ class Answer extends Model
     protected $guarded = [];
 
     // Relationships to eager load
-    protected $with = ['owner'];
+    protected $with = ['owner', 'comments'];
 
     /**
      * The accessors to append to the model's array or json form.
@@ -43,6 +43,14 @@ class Answer extends Model
     public function question()
     {
         return $this->belongsTo('App\Question');
+    }
+
+    /**
+     * Get all of the answer's comments.
+     */
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function isBest()
