@@ -14,6 +14,7 @@ require('./bootstrap');
 Vue.component('flash', require('./components/Flash.vue').default);
 Vue.component('question-view', require('./pages/Question.vue').default);
 Vue.component('paginator', require('./components/Paginator.vue').default);
+Vue.component('user-notifications', require('./components/UserNotifications.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

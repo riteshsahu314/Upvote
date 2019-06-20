@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Notifications\QuestionWasUpdated;
+use App\Providers\QuestionHasNewAnswer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
@@ -48,7 +50,11 @@ class Question extends Model
 
     public function addAnswer($answer)
     {
-        return $this->answers()->create($answer);
+        $answer = $this->answers()->create($answer);
+
+        event(new QuestionHasNewAnswer($this, $answer));
+
+        return $answer;
     }
 
     public function markBestAnswer(Answer $answer)

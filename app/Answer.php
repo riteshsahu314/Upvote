@@ -30,6 +30,11 @@ class Answer extends Model
         });
     }
 
+    public function path()
+    {
+        return $this->question->path() . "#answer-{$this->id}";
+    }
+
     public function owner()
     {
         return $this->belongsTo('App\User', 'user_id');

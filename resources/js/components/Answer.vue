@@ -1,5 +1,5 @@
 <template>
-    <div class="card mb-3">
+    <div :id="'answer-' + id" class="card mb-3">
         <div class="card-header" :class="isBest ? 'best' : ''">
             <h5><a :href="'/' + answer.owner.name">{{ answer.owner.name }}</a> answered {{ ago }}</h5>
         </div>

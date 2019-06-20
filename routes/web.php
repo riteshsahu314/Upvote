@@ -37,6 +37,10 @@ Route::post('/answers/{answer}/best', 'AnswersController@best');
 // Users
 Route::get('/{user}', 'UsersController@show')->name('users.show');
 
+// Notifications
+Route::get('/{user}/notifications', 'UserNotificationsController@index');
+Route::delete('/{user}/notifications/{notification}', 'UserNotificationsController@destroy');
+
 // Favorites
 Route::post('/questions/{question}/favorites', 'FavoritesController@store');
 Route::delete('/questions/{question}/favorites', 'FavoritesController@destroy');
