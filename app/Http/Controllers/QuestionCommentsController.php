@@ -19,6 +19,6 @@ class QuestionCommentsController extends Controller
         ]);
 
         return redirect($question->path())
-            ->with('flash', 'Comment published.');
+            ->with(['flash.message' => 'Comment published.']);
     }
 }

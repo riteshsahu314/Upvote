@@ -5,6 +5,7 @@ use App\Comment;
 use App\Question;
 use App\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class SampleDataSeeder extends Seeder
@@ -20,6 +21,7 @@ class SampleDataSeeder extends Seeder
         $this->questions();
         $this->answers();
         $this->comments();
+        $this->voteTypes();
         Schema::enableForeignKeyConstraints();
     }
 
@@ -46,5 +48,18 @@ class SampleDataSeeder extends Seeder
         // create sample questions and users
         factory(Comment::class, 60)->states('from_existing_questions_and_users')->create();
         factory(Comment::class, 100)->states('from_existing_answers_and_users')->create();
+    }
+
+    public function voteTypes()
+    {
+        DB::table('vote_types')->insert([
+            [
+                'name' => 'UpVote'
+            ],
+
+            [
+                'name' => 'DownVote'
+            ]
+        ]);
     }
 }

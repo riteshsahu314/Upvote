@@ -24,10 +24,10 @@ class UsersSeeder extends Seeder
             'email' => 'ritesh@example.com',
         ]);
 
-        // create a another dev user
+        // create another dev user
         factory(User::class)->create([
-            'name' => 'Pooja',
-            'email' => 'pooja@example.com',
+            'name' => 'Elon',
+            'email' => 'elon@example.com',
         ]);
 
         Schema::enableForeignKeyConstraints();

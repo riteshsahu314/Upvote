@@ -56,7 +56,7 @@ class QuestionsController extends Controller
         ]);
 
         return redirect($question->path())
-            ->with('flash', 'Your question has been posted successfully.');
+            ->with(['flash.message' => 'Your question has been posted successfully.']);
     }
 
     /**
@@ -114,6 +114,6 @@ class QuestionsController extends Controller
 
         return redirect()
             ->route('questions.index')
-            ->with('flash', 'Your question has been deleted successfully.');
+            ->with(['flash.message' => 'Your question has been deleted successfully.']);
     }
 }

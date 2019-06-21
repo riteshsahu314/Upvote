@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
-    use RecordsActivity;
+    use RecordsActivity, Voteable;
 
     // Allow Mass Assignment
     protected $guarded = [];

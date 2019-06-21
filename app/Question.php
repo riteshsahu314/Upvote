@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 class Question extends Model
 {
-    use RecordsActivity;
+    use RecordsActivity, Voteable;
 
     protected $guarded = [];
 

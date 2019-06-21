@@ -21,6 +21,7 @@ class CreateQuestionsTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->unsignedBigInteger('best_answer_id')->nullable();
+            $table->integer('score')->default(0);
             $table->timestamps();
 
             $table->foreign('best_answer_id')

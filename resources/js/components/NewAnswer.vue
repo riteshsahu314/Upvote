@@ -6,7 +6,7 @@
                 <textarea class="form-control"
                           name="body"
                           rows="5"
-                          placeholder="Have something to say ?"
+                          placeholder="Write your answer here."
                           v-model="body"
                           required
                 >

@@ -1,6 +1,6 @@
 <template>
     <div class="alert alert-flash"
-         :class="'alert-' + type"
+         :class="'alert-' + level"
          role="alert"
          v-show="show"
          v-text="body"
@@ -12,20 +12,20 @@
     export default {
         name: "Flash",
 
-        props: ['message'],
+        props: ['data'],
 
         data() {
             return {
-                body: this.message,
-                type: 'success',
+                body: '',
+                level: 'success',
                 show: false
             };
         },
 
         created() {
             // if we have data flash the message
-            if (this.message) {
-                this.flash();
+            if (this.data) {
+                this.flash(this.data);
             }
 
             // when 'flash' event occurs call flash() method on this vue component
@@ -36,9 +36,9 @@
 
         methods: {
             flash(data) {
-                if (data) {
-                    this.body = data.message;
-                    this.type = data.type;
+                this.body = data.message;
+                if (data.type) {
+                    this.level = data.type;
                 }
 
                 this.show = true;
