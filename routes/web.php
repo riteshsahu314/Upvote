@@ -27,12 +27,6 @@ Route::get('/questions/{question}', 'QuestionsController@show')->name('questions
 Route::patch('/questions/{question}', 'QuestionsController@update')->name('questions.update');
 Route::delete('/questions/{question}', 'QuestionsController@destroy')->name('questions.destroy');
 
-// Question Votes
-Route::post('/questions/{question}/{type}', 'QuestionVotesController@store')->name('questions.votes.store');
-
-// Answer Votes
-Route::post('/answers/{answer}/{type}', 'AnswerVotesController@store')->name('answers.votes.store');
-
 // Answers
 Route::get('/questions/{question}/answers', 'AnswersController@index');
 Route::post('/questions/{question}/answers', 'AnswersController@store');
@@ -54,3 +48,9 @@ Route::delete('/{user}/notifications/{notification}', 'UserNotificationsControll
 // Favorites
 Route::post('/questions/{question}/favorites', 'FavoritesController@store');
 Route::delete('/questions/{question}/favorites', 'FavoritesController@destroy');
+
+// Question Votes
+Route::post('/questions/{question}/{type}', 'QuestionVotesController@store')->name('questions.votes.store');
+
+// Answer Votes
+Route::post('/answers/{answer}/{type}', 'AnswerVotesController@store')->name('answers.votes.store');
