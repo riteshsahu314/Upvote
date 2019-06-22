@@ -22,7 +22,7 @@
 
         methods: {
             update() {
-                axios.patch(`/questions/${this.question.id}`, this.form)
+                axios.patch(`/questions/${this.question.slug}`, this.form)
                     .then(() => {
                         this.editing = false;
 

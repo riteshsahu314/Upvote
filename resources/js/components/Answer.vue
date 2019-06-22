@@ -38,7 +38,7 @@
                             </div>
 
                             <button class="btn btn-primary btn-sm">Update</button>
-                            <button class="btn btn-link btn-sm" @click="cancel">Cancel</button>
+                            <button class="btn btn-link btn-sm" @click.prevent="cancel">Cancel</button>
                         </form>
                     </div>
 

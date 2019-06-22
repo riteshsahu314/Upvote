@@ -58,7 +58,7 @@ class AnswersController extends Controller
         return $question->addAnswer([
             'body' => $request->body,
             'user_id' => auth()->id()
-        ])->load('owner');
+        ])->load('owner', 'comments');
     }
 
     /**
@@ -101,6 +101,9 @@ class AnswersController extends Controller
         $answer->update([
             'body' => $request->body
         ]);
+
+        // return the update answer
+        return $answer->fresh();
     }
 
     /**
