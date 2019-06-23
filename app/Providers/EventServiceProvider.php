@@ -21,7 +21,15 @@ class EventServiceProvider extends ServiceProvider
 
         'App\Events\QuestionHasNewAnswer' => [
             'App\Listeners\NotifyUsersWhoFavoritedQuestion',
-            'App\Listeners\NotifyQuestionOwner',
+            'App\Listeners\NotifyQuestionOwnerAboutAnswer',
+        ],
+
+        'App\Events\QuestionHasNewComment' => [
+            'App\Listeners\NotifyQuestionOwnerAboutComment',
+        ],
+
+        'App\Events\AnswerHasNewComment' => [
+            'App\Listeners\NotifyAnswerOwnerAboutComment',
         ]
     ];
 

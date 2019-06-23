@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\AnswerHasNewComment;
 use Illuminate\Database\Eloquent\Model;
 use Stevebauman\Purify\Facades\Purify;
 
@@ -61,7 +62,9 @@ class Answer extends Model
 
     public function addComment($comment)
     {
-        $this->comments()->create($comment);
+        $comment = $this->comments()->create($comment);
+
+        event(new AnswerHasNewComment($this, $comment));
     }
 
     public function isBest()

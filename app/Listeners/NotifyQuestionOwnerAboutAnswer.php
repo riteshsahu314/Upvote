@@ -3,9 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\QuestionHasNewAnswer;
-use App\Notifications\QuestionWasUpdated;
+use App\Notifications\QuestionReceivedAnswerNotification;
 
-class NotifyQuestionOwner
+class NotifyQuestionOwnerAboutAnswer
 {
     /**
      * Handle the event.
@@ -18,7 +18,7 @@ class NotifyQuestionOwner
         // Prepare notification for question owner
         // except if the owner itself answered the question
         if ($event->question->owner->id != $event->answer->owner->id) {
-            $event->question->owner->notify(new QuestionWasUpdated($event->question, $event->answer));
+            $event->question->owner->notify(new QuestionReceivedAnswerNotification($event->question, $event->answer));
         }
     }
 }

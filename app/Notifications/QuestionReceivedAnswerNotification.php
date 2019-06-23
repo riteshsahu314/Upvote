@@ -4,10 +4,8 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 
-class QuestionWasUpdated extends Notification
+class QuestionReceivedAnswerNotification extends Notification
 {
     use Queueable;
     protected $question;
@@ -21,7 +19,6 @@ class QuestionWasUpdated extends Notification
      */
     public function __construct($question, $answer)
     {
-        //
         $this->question = $question;
         $this->answer = $answer;
     }
@@ -38,20 +35,6 @@ class QuestionWasUpdated extends Notification
     }
 
     /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
-
-    /**
      * Get the array representation of the notification.
      *
      * @param  mixed  $notifiable
@@ -60,7 +43,7 @@ class QuestionWasUpdated extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => $this->answer->owner->name . ' answered to' . $this->question->title,
+            'message' => $this->answer->owner->name . ' answered to ' . $this->question->title,
             'link' => $this->answer->path()
         ];
     }

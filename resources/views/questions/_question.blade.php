@@ -67,7 +67,7 @@
         <div>
             <ul class="list-group">
                 @foreach($question->comments as $comment)
-                    <li class="list-group-item">
+                    <li class="list-group-item" id="{{ "comment-{$comment->id}" }}">
                         {{ $comment->body }} - <a href="{{ route('users.show', $comment->owner) }}">{{ $comment->owner->name }}</a>
                     </li>
                 @endforeach

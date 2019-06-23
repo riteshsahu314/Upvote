@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\QuestionHasNewAnswer;
-use App\Notifications\QuestionWasUpdated;
+use App\Notifications\QuestionReceivedAnswerNotification;
 
 class NotifyUsersWhoFavoritedQuestion
 {
@@ -19,7 +19,7 @@ class NotifyUsersWhoFavoritedQuestion
         // except the user who answered to the question
         foreach ($event->question->favorites as $favorite) {
             if ($favorite->user_id != $event->answer->user_id) {
-                $favorite->user->notify(new QuestionWasUpdated($event->question, $event->answer));
+                $favorite->user->notify(new QuestionReceivedAnswerNotification($event->question, $event->answer));
             }
         }
     }
