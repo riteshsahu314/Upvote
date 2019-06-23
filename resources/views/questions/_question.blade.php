@@ -45,7 +45,14 @@
         <div class="card-header d-flex justify-content-between">
             <div class="">
                 <h4 v-text="title"></h4>
-                <h5>Asked By: <a href="{{ route('users.show', $question->owner) }}">{{ $question->owner->name }}</a></h5>
+                <h5>
+                    Asked By: 
+                    <a href="{{ route('users.show', $question->owner) }}" class="ml-1">
+                        <img src="{{ $question->owner->avatar_path }}"
+                             alt="User Avatar" width="25" height="25" class="rounded-circle mr-1">
+                        {{ $question->owner->name }}
+                    </a>
+                </h5>
             </div>
             <favorite :question="{{ $question }}"></favorite>
         </div>

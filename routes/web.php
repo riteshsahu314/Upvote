@@ -41,6 +41,9 @@ Route::post('/answers/{answer}/comments', 'AnswerCommentsController@store')->mid
 // Users
 Route::get('/{user}', 'UsersController@show')->name('users.show');
 
+// Users Avatar
+Route::post('api/users/{user}/avatar', 'Api\UserAvatarController@store')->middleware('auth')->name('avatar');
+
 // Notifications
 Route::get('/{user}/notifications', 'UserNotificationsController@index');
 Route::delete('/{user}/notifications/{notification}', 'UserNotificationsController@destroy');

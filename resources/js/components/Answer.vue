@@ -21,7 +21,14 @@
         <div class="col-11">
             <div :id="'answer-' + id" class="card mb-3">
                 <div class="card-header" :class="isBest ? 'best' : ''">
-                    <h5><a :href="'/' + answer.owner.name">{{ answer.owner.name }}</a> answered {{ ago }}</h5>
+                    <h5>
+                        <a :href="'/' + answer.owner.name">
+                            <img :src="answer.owner.avatar_path" alt="User Avatar"
+                                 width="25" height="25" class="rounded-circle mr-1">
+                            {{ answer.owner.name }}
+                        </a>
+                        answered {{ ago }}
+                    </h5>
                 </div>
                 <div class="card-body">
                     <div v-if="editing">
