@@ -23,7 +23,7 @@
             <input type="text" v-model="form.title" placeholder="Question Title" class="form-control">
         </div>
         <div class="card-body">
-            <textarea class="form-control" cols="30" rows="10" v-model="form.body" placeholder="Question Description"></textarea>
+            <wysiwyg v-model="form.body"></wysiwyg>
         </div>
 
         @can('update', $question)
@@ -56,7 +56,7 @@
             </div>
             <favorite :question="{{ $question }}"></favorite>
         </div>
-        <div class="card-body" v-text="body"></div>
+        <div class="card-body" v-html="body"></div>
 
         @can('update', $question)
             <div class="card-footer">

@@ -34,7 +34,7 @@
                     <div v-if="editing">
                         <form @submit.prevent="update">
                             <div class="form-group">
-                                <textarea v-model="body" class="form-control"></textarea>
+                                <wysiwyg v-model="body"></wysiwyg>
                             </div>
 
                             <button class="btn btn-primary btn-sm">Update</button>
@@ -42,14 +42,14 @@
                         </form>
                     </div>
 
-                    <div v-else v-text="body"></div>
+                    <div v-else v-html="body"></div>
                 </div>
 
                 <div class="card-footer d-flex justify-content-between"
                      v-if="authorize('owns', answer) || authorize('owns', answer.question)">
                     <div v-if="authorize('owns', answer)">
-                        <button class="btn btn-secondary btn-sm mr-2" @click="editing = true">Edit</button>
-                        <button type="submit" class="btn btn-danger btn-sm" @click="destroy">Delete</button>
+                        <button class="btn btn-secondary btn-sm mr-2" @click.prevent="editing = true">Edit</button>
+                        <button type="submit" class="btn btn-danger btn-sm" @click.prevent="destroy">Delete</button>
                     </div>
                     <button class="btn btn-primary btn-sm" @click="markBestAnswer" v-if="authorize('owns', answer.question) && !isBest">
                         Best Answer

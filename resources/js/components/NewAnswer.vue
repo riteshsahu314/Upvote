@@ -3,14 +3,7 @@
         <div v-if="signedIn">
             <!--  Form Input -->
             <div class="form-group">
-                <textarea class="form-control"
-                          name="body"
-                          rows="5"
-                          placeholder="Write your answer here."
-                          v-model="body"
-                          required
-                >
-                </textarea>
+                <wysiwyg name="body" v-model="body"  placeholder="Write your answer here."></wysiwyg>
             </div>
             
             <button type="submit" class="btn btn-primary" @click="addAnswer">Post</button>

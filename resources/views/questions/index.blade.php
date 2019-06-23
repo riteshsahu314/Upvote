@@ -24,7 +24,7 @@
                         </div>
                         <div class="card-body">
                             <p>
-                                {{ $question->body }}
+                                {!! $question->body !!}
                             </p>
                         </div>
                     </div>

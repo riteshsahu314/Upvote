@@ -6,6 +6,7 @@ use App\Notifications\QuestionWasUpdated;
 use App\Providers\QuestionHasNewAnswer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Stevebauman\Purify\Facades\Purify;
 
 class Question extends Model
 {
@@ -124,5 +125,10 @@ class Question extends Model
         }
 
         $this->attributes['slug'] = $slug;
+    }
+
+    public function getBodyAttribute($body)
+    {
+        return Purify::clean($body);
     }
 }

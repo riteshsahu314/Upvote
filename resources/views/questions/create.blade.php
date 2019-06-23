@@ -23,8 +23,7 @@
                             <!-- Form Input for Body -->
                             <div class="form-group">
                                 <label for="body">Body:</label>
-                                <textarea class="form-control" name="body" id="body" rows="8"
-                                          placeholder="Describe your question" required></textarea>
+                                <wysiwyg name="body"></wysiwyg>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Post Question</button>
