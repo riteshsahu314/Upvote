@@ -19,8 +19,9 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
 
-        QuestionHasNewAnswer::class => [
-            NotifyUsersWhoFavoritedQuestion::class
+        'App\Events\QuestionHasNewAnswer' => [
+            'App\Listeners\NotifyUsersWhoFavoritedQuestion',
+            'App\Listeners\NotifyQuestionOwner',
         ]
     ];
 

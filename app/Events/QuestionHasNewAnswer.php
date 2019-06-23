@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Providers;
+namespace App\Events;
 
-use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Queue\SerializesModels;
 
 class QuestionHasNewAnswer

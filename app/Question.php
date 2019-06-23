@@ -2,8 +2,7 @@
 
 namespace App;
 
-use App\Notifications\QuestionWasUpdated;
-use App\Providers\QuestionHasNewAnswer;
+use App\Events\QuestionHasNewAnswer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Stevebauman\Purify\Facades\Purify;

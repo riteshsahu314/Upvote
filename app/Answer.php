@@ -29,6 +29,10 @@ class Answer extends Model
         static::created(function ($ansewr) {
             $ansewr->question->increment('answers_count');
         });
+
+        static::deleted(function ($ansewr) {
+            $ansewr->question->decrement('answers_count');
+        });
     }
 
     public function path()

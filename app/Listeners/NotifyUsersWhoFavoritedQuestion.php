@@ -1,24 +1,12 @@
 <?php
 
-namespace App\Providers;
+namespace App\Listeners;
 
+use App\Events\QuestionHasNewAnswer;
 use App\Notifications\QuestionWasUpdated;
-use App\Providers\QuestionHasNewAnswer;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class NotifyUsersWhoFavoritedQuestion
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
     /**
      * Handle the event.
      *
