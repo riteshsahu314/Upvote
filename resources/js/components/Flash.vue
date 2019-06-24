@@ -36,14 +36,17 @@
 
         methods: {
             flash(data) {
-                this.body = data.message;
                 if (data.type) {
                     this.level = data.type;
                 }
 
-                this.show = true;
+                if (data.message) {
+                    this.body = data.message;
 
-                this.hide();
+                    this.show = true;
+
+                    this.hide();
+                }
             },
 
             hide() {
@@ -54,11 +57,3 @@
         }
     }
 </script>
-
-<style scoped>
-    .alert-flash {
-        position: fixed;
-        right: 25px;
-        bottom: 25px;
-    }
-</style>

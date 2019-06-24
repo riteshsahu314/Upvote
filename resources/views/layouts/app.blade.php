@@ -35,7 +35,17 @@
             @yield('content')
         </main>
 
-        <flash :data="{{ json_encode(session('flash')) }}"></flash>
+        <div class="d-flex flex-column justify-content-end align-items-end position-fixed fixed-bottom">
+            <flash :data="{{ json_encode(session('flash')) }}"></flash>
+        </div>
+
+        @if(count($errors))
+            <div class="d-flex flex-column justify-content-end align-items-end position-fixed fixed-bottom">
+                @foreach($errors->all() as $error)
+                    <flash :data="{{ json_encode(['message' => $error, 'type' => 'danger']) }}"></flash>
+                @endforeach
+            </div>
+        @endif
     </div>
 </body>
 </html>

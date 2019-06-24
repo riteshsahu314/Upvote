@@ -12,7 +12,7 @@
                     @can('update', $user)
                         <form method="post" action="{{ route('avatar', $user) }}" enctype="multipart/form-data">
                             @csrf
-                            <input type="file" name="avatar" class="mb-3">
+                            <input type="file" name="avatar" class="mb-3 w-100" accept="image/*">
                             <button type="submit" class="btn btn-primary btn-sm form-control">Update Avatar</button>
                         </form>
                     @endcan

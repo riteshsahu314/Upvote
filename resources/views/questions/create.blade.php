@@ -27,14 +27,6 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary">Post Question</button>
-
-                            @if(count($errors))
-                                <ul class="alert alert-danger">
-                                    @foreach($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            @endif
                         </form>
                     </div>
                 </div>
