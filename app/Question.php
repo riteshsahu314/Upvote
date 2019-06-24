@@ -22,6 +22,8 @@ class Question extends Model
 
         static::deleting(function ($question) {
             $question->answers->each->delete();
+            $question->comments->each->delete();
+            $question->favorites->each->delete();
         });
 
         static::created(function ($question){

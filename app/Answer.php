@@ -31,8 +31,12 @@ class Answer extends Model
             $ansewr->question->increment('answers_count');
         });
 
-        static::deleted(function ($ansewr) {
-            $ansewr->question->decrement('answers_count');
+        static::deleted(function ($answer) {
+            $answer->question->decrement('answers_count');
+        });
+
+        static::deleting(function ($answer) {
+            $answer->comments->each->delete();
         });
     }
 

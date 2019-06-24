@@ -6,6 +6,14 @@ namespace App;
 
 trait Voteable
 {
+    protected static function bootVoteable()
+    {
+        // delete all votes of the model is deleting
+        static::deleting(function ($model) {
+            $model->votes->each->delete();
+        });
+    }
+
     public function votes()
     {
         return $this->morphMany(Vote::class, 'voteable');
