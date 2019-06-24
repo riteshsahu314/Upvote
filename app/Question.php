@@ -14,7 +14,12 @@ class Question extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['isFavorited', 'favoritesCount'];
+    /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = ['owner'];
 
     protected static function boot()
     {

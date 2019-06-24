@@ -14,7 +14,7 @@ class Answer extends Model
     protected $guarded = [];
 
     // Relationships to eager load
-    protected $with = ['owner', 'comments'];
+    protected $with = ['owner', 'comments', 'question'];
 
     /**
      * The accessors to append to the model's array or json form.

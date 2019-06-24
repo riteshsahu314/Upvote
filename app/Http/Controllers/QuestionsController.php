@@ -71,6 +71,9 @@ class QuestionsController extends Controller
     public function show(Question $question)
     {
         $question->increment('view_count');
+
+        $question = $question->append(['isFavorited', 'favoritesCount']);
+
         return view('questions.show', compact('question'));
     }
 

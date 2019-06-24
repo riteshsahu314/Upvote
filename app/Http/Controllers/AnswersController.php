@@ -50,11 +50,6 @@ class AnswersController extends Controller
             'body' => 'required'
         ]);
 
-        // store
-//        dd($question->addAnswer([
-////            'body' => $request->body,
-////            'user_id' => auth()->id()
-////        ])->with('owner'));
         return $question->addAnswer([
             'body' => $request->body,
             'user_id' => auth()->id()
