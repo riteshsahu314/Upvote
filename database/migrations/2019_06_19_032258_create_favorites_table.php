@@ -20,18 +20,6 @@ class CreateFavoritesTable extends Migration
             $table->timestamps();
 
             $table->unique(['question_id', 'user_id']);
-
-            // if user is deleted, delete all of  its favorites
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
-
-            // if question is deleted, delete all of  its favorites
-            $table->foreign('question_id')
-                ->references('id')
-                ->on('questions')
-                ->onDelete('cascade');
         });
     }
 

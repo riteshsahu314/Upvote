@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -35,8 +35,8 @@ Route::patch('/answers/{answer}', 'AnswersController@update');
 Route::post('/answers/{answer}/best', 'AnswersController@best');
 
 // Comments
-Route::post('/questions/{question}/comments', 'QuestionCommentsController@store')->middleware('auth');
-Route::post('/answers/{answer}/comments', 'AnswerCommentsController@store')->middleware('auth');
+Route::post('/questions/{question}/comments', 'QuestionCommentsController@store')->middleware(['auth', 'verified']);
+Route::post('/answers/{answer}/comments', 'AnswerCommentsController@store')->middleware(['auth', 'verified']);
 
 // Users
 Route::get('/{user}', 'UsersController@show')->name('users.show');

@@ -6,9 +6,19 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function($user) {
+            $user->favorites->each->delete();
+            $user->notifications->each->delete();
+        });
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -70,5 +80,10 @@ class User extends Authenticatable
     public function getAvatarPathAttribute($avatar)
     {
         return asset('storage/' . ($avatar ?: 'avatars/default.png'));
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany('App\Favorite');
     }
 }
