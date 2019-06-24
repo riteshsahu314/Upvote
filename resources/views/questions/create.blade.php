@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('scripts')
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -24,6 +28,10 @@
                             <div class="form-group">
                                 <label for="body">Body:</label>
                                 <wysiwyg name="body"></wysiwyg>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.key') }}"></div>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Post Question</button>
