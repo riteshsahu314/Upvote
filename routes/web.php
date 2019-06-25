@@ -39,10 +39,11 @@ Route::post('/questions/{question}/comments', 'QuestionCommentsController@store'
 Route::post('/answers/{answer}/comments', 'AnswerCommentsController@store')->middleware(['auth', 'verified']);
 
 // Users
-Route::get('/{user}', 'UsersController@show')->name('users.show');
+Route::get('/users', 'UsersController@index')->name('users.index');
+Route::get('/users/{user}', 'UsersController@show')->name('users.show');
 
 // Users Avatar
-Route::post('api/users/{user}/avatar', 'Api\UserAvatarController@store')->middleware('auth')->name('avatar');
+Route::post('/users/{user}/avatar', 'UserAvatarController@store')->middleware('auth')->name('avatar');
 
 // Notifications
 Route::get('/{user}/notifications', 'UserNotificationsController@index');

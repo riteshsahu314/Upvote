@@ -17,6 +17,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('questions.create') }}">Ask Question</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('users.index') }}">All Users</a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->

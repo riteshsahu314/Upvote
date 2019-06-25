@@ -22,7 +22,7 @@
             <div :id="'answer-' + id" class="card mb-3">
                 <div class="card-header" :class="isBest ? 'best' : ''">
                     <h5>
-                        <a :href="'/' + answer.owner.name">
+                        <a :href="'/users/' + answer.owner.name">
                             <img :src="answer.owner.avatar_path" alt="User Avatar"
                                  width="25" height="25" class="rounded-circle mr-1">
                             {{ answer.owner.name }}
@@ -59,7 +59,7 @@
                 <div v-if="comments.length">
                     <ul class="list-group" v-for="comment in comments">
                         <li class="list-group-item" :id="`comment-${comment.id}`">
-                            {{ comment.body }} - <a :href="'/' + comment.owner.name">{{ comment.owner.name }}</a>
+                            {{ comment.body }} - <a :href="'/users/' + comment.owner.name">{{ comment.owner.name }}</a>
                         </li>
                     </ul>
                 </div>
