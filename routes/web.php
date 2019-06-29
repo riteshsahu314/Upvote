@@ -45,6 +45,10 @@ Route::get('/users/{user}', 'UsersController@show')->name('users.show');
 // Users Avatar
 Route::post('/users/{user}/avatar', 'UserAvatarController@store')->middleware('auth')->name('avatar');
 
+// Tags
+Route::get('/tags', 'TagsController@index')->name('tags.index');
+Route::get('/tags/{tag}', 'TagsController@show')->name('tags.show');
+
 // Notifications
 Route::get('/{user}/notifications', 'UserNotificationsController@index');
 Route::delete('/{user}/notifications/{notification}', 'UserNotificationsController@destroy');

@@ -18,6 +18,7 @@ Vue.component('question-view', require('./pages/Question.vue').default);
 Vue.component('paginator', require('./components/Paginator.vue').default);
 Vue.component('user-notifications', require('./components/UserNotifications.vue').default);
 Vue.component('wysiwyg', require('./components/Wysiwyg.vue').default);
+Vue.component('tag-editor', require('./components/TagEditor').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

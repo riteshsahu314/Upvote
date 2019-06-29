@@ -46,17 +46,16 @@ class QuestionsController extends Controller
      */
     public function store(Request $request, Recaptcha $recaptcha)
     {
+        // validate
         $request->validate([
             'title' => 'required',
             'body' => 'required',
+            'tagsIds' => 'required|array',
             'g-recaptcha-response' => ['required', $recaptcha]
         ]);
 
-        $question = Question::create([
-            'user_id' => auth()->id(),
-            'title' => $request->title,
-            'body' => $request->body
-        ]);
+        // save
+        $question = $this->createQuestion($request);
 
         return redirect($question->path())
             ->with(['flash.message' => 'Your question has been posted successfully.']);
@@ -101,10 +100,18 @@ class QuestionsController extends Controller
 
         $request->validate([
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'tagsIds' => 'required|array'
         ]);
 
-        $question->update($request->all());
+        $question->update([
+            'title' => $request->title,
+            'body' => $request->body
+        ]);
+
+        $this->syncTags($question, $request->tagsIds);
+
+        return $question->fresh();
     }
 
     /**
@@ -122,5 +129,35 @@ class QuestionsController extends Controller
         return redirect()
             ->route('questions.index')
             ->with(['flash.message' => 'Your question has been deleted successfully.']);
+    }
+
+    /**
+     * Sync up the list of tags in the database.
+     *
+     * @param Question $question
+     * @param array $tags
+     */
+    private function syncTags(Question $question, array $tagsIds)
+    {
+        $question->tags()->sync($tagsIds);
+    }
+
+    /**
+     * Save a new Question.
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    private function createQuestion(Request $request)
+    {
+        $question = Question::create([
+            'user_id' => auth()->id(),
+            'title' => $request->title,
+            'body' => $request->body
+        ]);
+
+        $this->syncTags($question, $request->tagsIds);
+
+        return $question;
     }
 }

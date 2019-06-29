@@ -21,6 +21,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('users.index') }}">All Users</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('tags.index') }}">All Tags</a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->

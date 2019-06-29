@@ -130,7 +130,10 @@ return [
 
     'custom' => [
         'g-recaptcha-response' => [
-            'required' => 'Please solve the recaptcha and submit again.',
+            'required' => 'Please solve the recaptcha.',
+        ],
+        'tags' => [
+            'required' => 'Question must have at least one tag.',
         ],
     ],
 

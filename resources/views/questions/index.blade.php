@@ -23,9 +23,15 @@
                             </p>
                         </div>
                         <div class="card-body">
-                            <p>
+                            <div class="mb-2">
                                 {!! $question->body !!}
-                            </p>
+                            </div>
+
+                            <div>
+                                @foreach($question->tags as $tag)
+                                    <a href="{{ route('tags.show', $tag) }}" class="bg-info text-white p-1 text-decoration-none">{{ $tag->name }}</a>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 @empty

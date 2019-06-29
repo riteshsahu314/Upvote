@@ -30,6 +30,12 @@
                                 <wysiwyg name="body"></wysiwyg>
                             </div>
 
+                            <!-- Form Input for Tags -->
+                            <div class="form-group">
+                                <label for="tags">Tags:</label>
+                                <tag-editor></tag-editor>
+                            </div>
+
                             <div class="form-group">
                                 <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.key') }}"></div>
                             </div>

@@ -23,7 +23,9 @@
             <input type="text" v-model="form.title" placeholder="Question Title" class="form-control">
         </div>
         <div class="card-body">
-            <wysiwyg v-model="form.body"></wysiwyg>
+            <wysiwyg v-model="form.body" class="mb-2"></wysiwyg>
+
+            <tag-editor :tags="{{ $question->tags }}" @tag-added="addTag" @tag-removed="removeTag"></tag-editor>
         </div>
 
         @can('update', $question)
@@ -56,7 +58,12 @@
             </div>
             <favorite :question="{{ $question }}"></favorite>
         </div>
-        <div class="card-body" v-html="body"></div>
+        <div class="card-body">
+            <div v-html="body" class="mb-2"></div>
+            <div>
+                <a :href="`/tags/${tag.name}`" class="bg-info text-white p-1 mr-2 text-decoration-none" v-for="tag in tags" v-text="tag.name"></a>
+            </div>
+        </div>
 
         @can('update', $question)
             <div class="card-footer">

@@ -19,7 +19,7 @@ class Question extends Model
      *
      * @var array
      */
-    protected $with = ['owner'];
+    protected $with = ['owner', 'tags'];
 
     protected static function boot()
     {
@@ -139,5 +139,10 @@ class Question extends Model
     public function getBodyAttribute($body)
     {
         return Purify::clean($body);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 }
