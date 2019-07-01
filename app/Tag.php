@@ -7,7 +7,7 @@ use Laravel\Scout\Searchable;
 
 class Tag extends Model
 {
-    use Searchable;
+    use Searchable, Filterable;
 
     public function getRouteKeyName()
     {

@@ -2,7 +2,17 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-start">
+        <div class="row justify-content-end mb-2">
+            <ul class="nav nav-pills" id="tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="?sortBy=name">Name</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="?sortBy=new">New</a>
+                </li>
+            </ul>
+        </div>
+        <div class="row justify-content-start mb-3">
             @foreach($users as $user)
                 <a href="{{ route('users.show', $user) }}" class="m-1 border border-info" style="width: 24%;">
                     <div class="card-body d-flex align-items-center p-2">
@@ -12,6 +22,10 @@
                     </div>
                 </a>
             @endforeach
+        </div>
+
+        <div class="row">
+            {{ $users->appends(request()->except('page'))->links() }}
         </div>
     </div>
 @endsection

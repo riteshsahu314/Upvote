@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\UserFilter;
 use App\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    public function index()
+    public function index(UserFilter $filter)
     {
-        $users = User::orderBy('name')->get();
+        $users = User::filter($filter)->paginate(24);
 
         return view('users.index', compact('users'));
     }

@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\TagFilter;
 use App\Tag;
 use Illuminate\Http\Request;
 
 class TagsController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, TagFilter $filter)
     {
-        $query = $request['q'];
-
-        $tags = Tag::search($query);
-
         if ($request->expectsJson()) {
+            $query = $request['q'];
+
+            $tags = Tag::search($query);
+
             return $tags->get();
         }
 
-        $tags = $tags->paginate(20);
+        $tags = Tag::filter($filter)->paginate(20);
 
         return view('tags.index', compact('tags'));
     }

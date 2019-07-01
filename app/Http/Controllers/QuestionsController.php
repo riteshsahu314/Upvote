@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\QuestionFilter;
 use App\Question;
 use App\Rules\Recaptcha;
 use Illuminate\Http\Request;
@@ -21,9 +22,10 @@ class QuestionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(QuestionFilter $filter)
     {
-        $questions = Question::latest()->paginate(10);
+        $questions = Question::filter($filter)->paginate(10);
+
         return view('questions.index', compact('questions'));
     }
 

@@ -10,7 +10,7 @@ use Stevebauman\Purify\Facades\Purify;
 
 class Question extends Model
 {
-    use RecordsActivity, Voteable;
+    use RecordsActivity, Voteable, Filterable;
 
     protected $guarded = [];
 

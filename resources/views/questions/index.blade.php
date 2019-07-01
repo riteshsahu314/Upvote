@@ -2,6 +2,19 @@
 
 @section('content')
     <div class="container">
+        <div class="row justify-content-end mb-2">
+            <ul class="nav nav-pills" id="tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="?sortBy=new">New</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="?sortBy=popular">Popular</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="?sortBy=votes">Votes</a>
+                </li>
+            </ul>
+        </div>
         <div class="row justify-content-center">
             <div class="col">
                 @forelse($questions as $question)
@@ -38,7 +51,7 @@
                     <p>There is no questions at this time.</p>
                 @endforelse
 
-                {{ $questions->render() }}
+                {{ $questions->appends(request()->except('page'))->links() }}
             </div>
         </div>
     </div>
