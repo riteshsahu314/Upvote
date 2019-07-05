@@ -10,7 +10,7 @@ abstract class Filters
 {
     protected $request, $builder;
 
-    protected $default = 'newest';
+    protected $default = 'new';
 
     /**
      * QuestionFilters constructor.
