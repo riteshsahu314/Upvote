@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Filters\QuestionFilter;
+use App\HotQuestions;
 use App\Question;
 use App\Rules\Recaptcha;
 use Illuminate\Http\Request;
@@ -69,9 +70,11 @@ class QuestionsController extends Controller
      * @param \App\Question $question
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $question)
+    public function show(Question $question, HotQuestions $hot_questions)
     {
         $question->increment('view_count');
+
+        $hot_questions->push($question);
 
         $question = $question->append(['isFavorited', 'favoritesCount']);
 

@@ -27,6 +27,9 @@ Route::get('/questions/{question}', 'QuestionsController@show')->name('questions
 Route::patch('/questions/{question}', 'QuestionsController@update')->name('questions.update');
 Route::delete('/questions/{question}', 'QuestionsController@destroy')->name('questions.destroy');
 
+// Search Questions
+Route::get('/search', 'SearchController@show')->name('search');
+
 // Answers
 Route::get('/questions/{question}/answers', 'AnswersController@index');
 Route::post('/questions/{question}/answers', 'AnswersController@store');

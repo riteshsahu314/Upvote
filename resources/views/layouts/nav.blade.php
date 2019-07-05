@@ -27,6 +27,15 @@
                 </li>
             </ul>
 
+            <form action="{{ route('search') }}" method="get">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="q" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->

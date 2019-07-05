@@ -6,11 +6,12 @@ use App\Events\QuestionHasNewAnswer;
 use App\Events\QuestionHasNewComment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Laravel\Scout\Searchable;
 use Stevebauman\Purify\Facades\Purify;
 
 class Question extends Model
 {
-    use RecordsActivity, Voteable, Filterable;
+    use RecordsActivity, Voteable, Filterable, Searchable;
 
     protected $guarded = [];
 
