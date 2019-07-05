@@ -1,0 +1,18 @@
+.user-box {
+    padding: 5px;
+    width: 200px;
+
+    & > a {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    .user-avatar {
+        margin-right: .5rem;
+    }
+
+    .user-name {
+        font-size: 0.8rem;
+    }
+}

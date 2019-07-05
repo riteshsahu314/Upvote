@@ -1,38 +1,42 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row justify-content-end mb-2">
-        <ul class="nav nav-pills" id="tabs">
-            <li class="nav-item">
-                <a class="nav-link" href="?sortBy=name">Name</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="?sortBy=new">New</a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="row justify-content-start mb-3">
-        @foreach($tags as $tag)
-            <div class="card bg-light m-2" style="max-width: 23%;">
-                <div class="card-header">
-                    <a href="{{ route('tags.show', $tag) }}">
-                        {{ $tag->name }}
-                    </a>
-                </div>
-
-                <div class="card-body">
-                    <p class="card-text">{{ $tag->description }}</p>
+    <div class="p-5">
+        <div class="mb-4">
+            <div class="mb-3">
+                <h2>Tags</h2>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <div></div>
+                <div class="btn-group">
+                    <a class="btn btn-outline-secondary" href="?sortBy=new">New</a>
+                    <a class="btn btn-outline-secondary" href="?sortBy=name">Name</a>
                 </div>
             </div>
-        @endforeach
-    </div>
+        </div>
 
-    <div class="row">
-        {{ $tags->appends(request()->except('page'))->links() }}
-    </div>
-@endsection
+        <div class="mb-3">
+            <div id="tags-list">
+                @foreach($tags as $tag)
+                    <div class="tag-box border-bottom">
+                        <div class="mb-2">
+                            <a class="tag" href="{{ route('tags.show', $tag) }}">
+                                {{ $tag->name }}
+                            </a>
+                        </div>
 
-@section('sidebar')
-    @include('partials._hot_questions')
+                        <div>
+                            <p class="tag-desc">{{ Str::limit($tag->description, 200) }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="clearfix">
+            <div class="pager float-right">
+                {{ $tags->appends(request()->except('page'))->links() }}
+            </div>
+        </div>
+    </div>
 @endsection

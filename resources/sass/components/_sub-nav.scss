@@ -1,0 +1,43 @@
+.nav {
+    list-style-type: none;
+    padding: 0;
+
+    &__item {
+        padding: 0.7rem 1rem;
+        position: relative;
+
+        & > a {
+            text-decoration: none;
+            color: #b2bec3;
+
+            &:hover {
+                color: white;
+            }
+        }
+
+        &__text {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        &--active {
+            & span::after {
+                content: "";
+                border-bottom: 5px solid $orange-dark;
+                width: 80px;
+                position: absolute;
+                left: calc(50% - 40px);
+                bottom: 0;
+                display: block;
+                border-radius: 1000px;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            & > a {
+                color: white;
+            }
+        }
+    }
+}

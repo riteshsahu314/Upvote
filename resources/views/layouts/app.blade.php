@@ -18,11 +18,11 @@
         ]);
     </script>
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
+{{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+{{--    ToDo: uncomment --}}
+{{--    <link rel="dns-prefetch" href="//fonts.gstatic.com">--}}
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -31,33 +31,23 @@
     <div id="app">
         @include('layouts.nav')
 
-        <div class="container">
-            <div class="row py-4">
-                <main class="col">
-                    @yield('content')
-                </main>
-
-                @hasSection('sidebar')
-                    <aside class="col-3">
-                        @yield('sidebar')
-                    </aside>
-                @endif
-            </div>
+        <div>
+            @yield('content')
         </div>
 
-        <div class="d-flex flex-column justify-content-end align-items-end position-fixed fixed-bottom">
-            <flash :data='@json(session('flash'))'></flash>
-        </div>
-
-        @if(count($errors))
-            <div class="d-flex flex-column justify-content-end align-items-end position-fixed fixed-bottom">
-                @foreach($errors->all() as $error)
-                    <flash :data='@json(['message' => $error, 'type' => 'danger'])'></flash>
-                @endforeach
-            </div>
-        @endif
+        @include('partials.flash-messages')
     </div>
 
+    @include('partials.search-model')
+
+    <script src="{{ asset('js/app.js') }}"></script>
+
     @yield('scripts')
+
+    <script>
+        $('#searchBox').on('shown.bs.modal', function () {
+            $('#searchInput').trigger('focus')
+        })
+    </script>
 </body>
 </html>

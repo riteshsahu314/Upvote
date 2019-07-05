@@ -1,0 +1,22 @@
+.search-bar {
+    .search-input {
+        font-size: 1.5rem;
+        caret-color: $orange-dark;
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    .search-icon {
+        position: relative;
+        top: 3px;
+        color: #464646;
+    }
+}
+
+.search-icon {
+    color: white;
+    font-size: 1.3rem;
+}

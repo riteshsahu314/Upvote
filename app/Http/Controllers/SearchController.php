@@ -18,6 +18,6 @@ class SearchController extends Controller
             return $questions;
         }
 
-        return view('questions.index', compact('questions'));
+        return view('questions.search', compact('questions', 'query'));
     }
 }

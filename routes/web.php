@@ -11,13 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'TopQuestionsController@index')->name('top_questions');
 
 Auth::routes(['verify' => true]);
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 // Questions
 Route::get('/questions', 'QuestionsController@index')->name('questions.index');

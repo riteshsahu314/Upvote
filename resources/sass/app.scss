@@ -1,5 +1,6 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+//  TODO: uncomment
+//@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
@@ -7,10 +8,90 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Typography
+@import "typography";
+
 // Font Awesome
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
-[v-cloak] {display: none}
+// Utilities
+@import 'utilities';
+
+// App Components
+@import "components/search-bar";
+@import "components/sub-nav";
+@import "components/question-summary";
+@import "components/user-box";
+@import "components/tag-box";
+
+[v-cloak] {display: none;}
+
+.main-nav {
+    background-color: #34495e;
+    color: white;
+}
+
+label {
+    cursor: pointer;
+}
+
+a {
+    color: darken($primary, 10%);
+    text-decoration: none;
+
+    &:hover {
+        color: lighten($primary, 10%);
+        text-decoration: none;
+    }
+}
+
+.pager {
+    margin: 1rem;
+
+    & > ul {
+        margin: 0;
+    }
+}
+
+.states {
+    padding-left: 0;
+    font-size: 0.8rem;
+}
+
+#questions {
+    border-top: 1px solid #bbbbbb;
+    margin-left: -1rem;
+}
+
+#users-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 1.2rem;
+    font-size: 0.9rem;
+}
+
+#tags-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 1.5rem;
+    font-size: 0.8rem;
+}
+
+.comments {
+    list-style: none;
+    border-top: 1px solid $gray-300;
+    padding: 0;
+}
+
+.comment {
+    border-bottom: 1px solid $gray-300;
+    padding: 0.3rem 0 0.3rem 1.2rem;
+}
+
+.dropdown-menu {
+    margin: 0;
+    border-radius: 0;
+}

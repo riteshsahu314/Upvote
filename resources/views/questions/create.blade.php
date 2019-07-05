@@ -40,6 +40,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary">Post Question</button>
+                            <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
                         </form>
                     </div>
                 </div>

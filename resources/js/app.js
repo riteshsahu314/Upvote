@@ -29,3 +29,7 @@ Vue.component('tag-editor', require('./components/TagEditor').default);
 const app = new Vue({
     el: '#app',
 });
+
+$('#searchBar').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+});

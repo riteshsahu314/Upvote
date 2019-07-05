@@ -1,10 +1,10 @@
 <template>
     <li class="nav-item dropdown" v-if="notifications.length">
         <a href="#" class="nav-link" data-toggle="dropdown">
-            <i class="fas fa-bell"></i>
+            <i class="fas fa-bell notification-icon"></i>
         </a>
 
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <div id="notifications" class="dropdown-menu dropdown-menu-right shadow border" aria-labelledby="navbarDropdown">
             <a v-for="notification in notifications"
                v-text="notification.data.message"
                class="dropdown-item"
@@ -43,5 +43,13 @@
 </script>
 
 <style scoped>
+     .notification-icon {
+         color: white;
+         padding: 0.3rem;
+         font-size: 1.3rem;
+     }
 
+    #notifications {
+        width: 430px;
+    }
 </style>

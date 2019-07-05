@@ -1,34 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row justify-content-end mb-2">
-        <ul class="nav nav-pills" id="tabs">
-            <li class="nav-item">
-                <a class="nav-link" href="?sortBy=name">Name</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="?sortBy=new">New</a>
-            </li>
-        </ul>
-    </div>
-    <div class="row justify-content-start mb-3">
-        @foreach($users as $user)
-            <a href="{{ route('users.show', $user) }}" class="m-1 border border-info" style="width: 24%;">
-                <div class="card-body d-flex align-items-center p-2">
-                    <img src="{{ $user->avatar_path }}" alt="User Avatar" width="50" height="50"
-                         class="mr-2 rounded-circle">
-
-                    <h5>{{ $user->name }}</h5>
+    <div class="p-5">
+        <div class="mb-4">
+            <div class="mb-3">
+                <h2>Users</h2>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <div></div>
+                <div class="btn-group">
+                    <a class="btn btn-outline-secondary" href="?sortBy=new">New</a>
+                    <a class="btn btn-outline-secondary" href="?sortBy=name">Name</a>
                 </div>
-            </a>
-        @endforeach
-    </div>
+            </div>
+        </div>
 
-    <div class="row">
-        {{ $users->appends(request()->except('page'))->links() }}
-    </div>
-@endsection
+        <div id="users-list" class="mb-3">
+            @foreach($users as $user)
+                <div class="user-box w-auto border-bottom">
+                    <a href="{{ route('users.show', $user) }}">
+                        <img src="{{ $user->avatar_path }}" alt="User Avatar" width="50" height="50"
+                             class="mr-2 rounded-circle">
+                        <span>{{ $user->name }}</span>
+                    </a>
+                </div>
+            @endforeach
+        </div>
 
-@section('sidebar')
-    @include('partials._hot_questions')
+        <div class="clearfix">
+            <div class="pager float-right">
+                {{ $users->appends(request()->except('page'))->links() }}
+            </div>
+        </div>
+    </div>
 @endsection

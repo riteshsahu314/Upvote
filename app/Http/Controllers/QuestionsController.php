@@ -25,7 +25,7 @@ class QuestionsController extends Controller
      */
     public function index(QuestionFilter $filter)
     {
-        $questions = Question::filter($filter)->paginate(10);
+        $questions = Question::filter($filter)->paginate(15);
 
         return view('questions.index', compact('questions'));
     }

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="(answer, index) in items" :key="answer.id">
+        <div v-for="(answer, index) in items" :key="answer.id" class="border-bottom">
             <answer :answer="answer" @deletedAnswer="remove(index)"></answer>
         </div>
 

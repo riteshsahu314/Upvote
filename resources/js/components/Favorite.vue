@@ -1,11 +1,11 @@
 <template>
-    <div v-if="signedIn" class="d-flex flex-column align-items-center">
-        <button @click="toggle">
-            <i class="fas fa-star" v-if="active"></i>
-            <i class="far fa-star" v-else></i>
-        </button>
+    <div v-if="signedIn" class="favorite">
+        <a href="#" @click="toggle">
+            <i class="fas fa-star favorite__icon" v-if="active"></i>
+            <i class="far fa-star favorite__icon" v-else></i>
+        </a>
 
-        <span>{{ count }}</span>
+        <span class="favorite__count">{{ count }}</span>
     </div>
 </template>
 
@@ -47,3 +47,19 @@
         }
     }
 </script>
+
+<style scoped lang="scss">
+    .favorite {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__icon {
+            color: #e67e23;
+        }
+
+        &__count {
+            color: lighten(#e67e23, 10%);
+        }
+    }
+</style>

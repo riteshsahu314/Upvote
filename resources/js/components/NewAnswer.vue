@@ -1,6 +1,8 @@
 <template>
     <div>
         <div v-if="signedIn">
+            <h3 class="font-weight-normal pt-3 mb-3">Your Answer</h3>
+
             <!--  Form Input -->
             <div class="form-group">
                 <wysiwyg name="body" v-model="body"  placeholder="Write your answer here."></wysiwyg>
