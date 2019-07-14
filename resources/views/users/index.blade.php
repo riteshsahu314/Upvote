@@ -9,8 +9,11 @@
             <div class="d-flex justify-content-between mb-2">
                 <div></div>
                 <div class="btn-group">
-                    <a class="btn btn-outline-secondary" href="?sortBy=new">New</a>
-                    <a class="btn btn-outline-secondary" href="?sortBy=name">Name</a>
+                    <a class="btn {{ Request::input('sortBy') == 'new' ? 'btn-secondary' : 'btn-outline-secondary' }}"
+                       href="?sortBy=new">New</a>
+
+                    <a class="btn {{ Request::input('sortBy') == 'name' ? 'btn-secondary' : 'btn-outline-secondary' }}"
+                       href="?sortBy=name">Name</a>
                 </div>
             </div>
         </div>
