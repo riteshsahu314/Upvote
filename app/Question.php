@@ -122,7 +122,7 @@ class Question extends Model
 
         if ($this->favorites()->where($attributes)->exists()) {
             // this will prevent the user from unfavoriting an unfavorited question
-            $this->favorites()->where($attributes)->delete();
+            $this->favorites()->where($attributes)->first()->delete();
         }
     }
 
