@@ -58,28 +58,47 @@
         <div>
             <ul class="comments">
                 @foreach($question->comments as $comment)
-                    <li class="comment" id="{{ "comment-{$comment->id}" }}">
-                        {{ $comment->body }} - <a
-                            href="{{ route('users.show', $comment->owner) }}">{{ $comment->owner->name }}</a>
+                    <li class="comment d-flex align-items-center justify-content-between" id="{{ "comment-{$comment->id}" }}">
+                        <div>
+                            <span>{{ $comment->body }} - </span>
+                            <a href="{{ route('users.show', $comment->owner) }}">{{ $comment->owner->name }}</a>
+                        </div>
+
+                        @can('update', $comment)
+                            <form action="/questions/{{ $question->slug }}/comments/{{ $comment->id }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-link py-0">Delete</button>
+                            </form>
+                        @endcan
                     </li>
                 @endforeach
             </ul>
 
-            @auth
-                <form action="{{ url("/questions/{$question->slug}/comments") }}" method="post">
-                @csrf
+            <div>
+                @auth
+                    <vue-show>
+                        <template v-slot:link>
+                            <span>add comment</span>
+                        </template>
 
-                <!-- Form Input for Comment body-->
-                    <div class="d-flex">
-                        <textarea class="form-control" style="min-height: 53px;" name="body" rows="1"
-                                  placeholder="add a comment..."></textarea>
+                        <template v-slot:body>
+                            <!-- Form for Comment body-->
+                            <form action="{{ url("/questions/{$question->slug}/comments") }}" method="post">
+                                <div class="d-flex align-items-start">
+                                    @csrf
+                                    <textarea class="form-control mr-2" style="min-height: 53px;" name="body"
+                                              placeholder="add a comment..."></textarea>
 
-                        <button type="submit" class="btn btn-primary align-self-start m-2">
-                            Publish
-                        </button>
-                    </div>
-                </form>
-            @endauth
+                                    <button type="submit" class="btn btn-sm btn-primary text-nowrap">
+                                        Add Comment
+                                    </button>
+                                </div>
+                            </form>
+                        </template>
+                    </vue-show>
+                @endauth
+            </div>
         </div>
     </div>
 </div>

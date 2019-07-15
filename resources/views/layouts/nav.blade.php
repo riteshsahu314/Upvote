@@ -1,4 +1,4 @@
-<nav class="main-nav navbar navbar-expand-md navbar-light shadow-sm sticky-top p-0">
+<nav class="main-nav navbar navbar-expand-md navbar-light shadow-sm sticky-top">
     <div class="container-fluid px-5">
         <a class="navbar-brand text-uppercase text-white" href="{{ url('/') }}">
             {{ config('app.name', 'Upvote') }}

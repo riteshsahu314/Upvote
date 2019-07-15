@@ -5,18 +5,18 @@
             action="{{ route('questions.votes.store', ['question' => $question, 'type' => 'UpVote']) }}"
             method="post">
             @csrf
-            <button class="btn btn-link p-0"><i class="fas fa-caret-up fa-3x"></i></button>
+            <button class="btn btn-link text-secondary p-0"><i class="fas fa-caret-up fa-3x"></i></button>
         </form>
     </div>
     <div>
-        <span>{{ $question->score }}</span>
+        <span class="text-secondary">{{ $question->score }}</span>
     </div>
     <div>
         <form
             action="{{ route('questions.votes.store', ['question' => $question, 'type' => 'DownVote']) }}"
             method="post">
             @csrf
-            <button class="btn btn-link p-0"><i class="fas fa-caret-down fa-3x"></i></button>
+            <button class="btn btn-link text-secondary p-0"><i class="fas fa-caret-down fa-3x"></i></button>
         </form>
     </div>
     <div>

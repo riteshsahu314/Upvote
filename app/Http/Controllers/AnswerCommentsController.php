@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
+use App\Comment;
 use Illuminate\Http\Request;
 
 class AnswerCommentsController extends Controller
@@ -20,5 +21,14 @@ class AnswerCommentsController extends Controller
 
         return redirect($answer->path())
             ->with('flash', 'Comment published.');
+    }
+
+    public function destroy(Answer $answer, Comment $comment)
+    {
+        $this->authorize('update', $comment);
+
+        $comment->delete();
+
+        return redirect($answer->path());
     }
 }

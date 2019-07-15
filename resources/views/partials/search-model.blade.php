@@ -9,7 +9,7 @@
                                 <i class="fas fa-search search-icon mr-2"></i>
                             </label>
                             <input id="searchInput" type="text" class="form-control border-0 search-input"
-                                   name="q" placeholder="Search for questions" aria-label="Search">
+                                   name="q" placeholder="Search questions" aria-label="Search">
                         </div>
                     </form>
                 </div>

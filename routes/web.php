@@ -36,7 +36,10 @@ Route::post('/answers/{answer}/best', 'AnswersController@best');
 
 // Comments
 Route::post('/questions/{question}/comments', 'QuestionCommentsController@store')->middleware(['auth', 'verified']);
+Route::delete('/questions/{question}/comments/{comment}', 'QuestionCommentsController@destroy')->middleware(['auth', 'verified']);
+
 Route::post('/answers/{answer}/comments', 'AnswerCommentsController@store')->middleware(['auth', 'verified']);
+Route::delete('/answers/{answer}/comments/{comment}', 'AnswerCommentsController@destroy')->middleware(['auth', 'verified']);
 
 // Users
 Route::get('/users', 'UsersController@index')->name('users.index');

@@ -7,6 +7,6 @@
     @endslot
 
     @slot('body')
-        {{ $activity->subject->body }}
+        {{ Str::limit($activity->subject->body, 200) }}
     @endslot
 @endcomponent

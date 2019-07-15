@@ -5,7 +5,17 @@
 </template>
 
 <style lang="scss">
-    @import '~selectize/dist/css/selectize.default.css';
+    @import '~selectize/dist/css/selectize.css';
+
+    .selectize-control.multi .selectize-input > div {
+        background: #E1ECF4;
+        color: #2176bd;
+    }
+
+    .selectize-control.multi .selectize-input > div.active {
+        color: #1286e6;
+        background-color: #b2cde0;
+    }
 </style>
 
 <script>
@@ -19,7 +29,7 @@
         data() {
             return {
                 settings: {
-                    plugins: ['restore_on_backspace'],
+                    plugins: ['restore_on_backspace', 'remove_button'],
                     persist: false,
                     openOnFocus: false,
                     closeAfterSelect: true,
@@ -27,7 +37,7 @@
                     labelField: 'name',
                     searchField: 'name',
                     placeholder: 'e.g. (php laravel javascript)',
-                    loadThrottle: 600,
+                    loadThrottle: 300,
                     maxOptions: 6,
                     create(input) {     // ES6 syntax
                         return {

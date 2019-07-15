@@ -11,7 +11,7 @@
             <button type="submit" class="btn btn-primary" @click="addAnswer">Post</button>
         </div>
 
-        <p class="text-center" v-else>
+        <p class="text-center mt-3" v-else>
             Please <a href="/login">sign in</a> to post answer.
         </p>
     </div>

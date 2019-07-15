@@ -5,7 +5,7 @@
             <i class="far fa-star favorite__icon" v-else></i>
         </a>
 
-        <span class="favorite__count">{{ count }}</span>
+        <span class="text-secondary">{{ count }}</span>
     </div>
 </template>
 
@@ -53,13 +53,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        font-size: 1rem;
 
         &__icon {
-            color: #e67e23;
-        }
-
-        &__count {
-            color: lighten(#e67e23, 10%);
+            color: #f99f51;
         }
     }
 </style>

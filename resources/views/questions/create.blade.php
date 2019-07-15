@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    <div class="container p-5">
         <div class="row justify-content-center">
             <div class="col">
                 <div class="card">
@@ -20,7 +21,7 @@
                             <div class="form-group">
                                 <label for="title">Title:</label>
                                 <input type="text" name="title" class="form-control" id="title"
-                                       placeholder="Enter question title" required>
+                                       placeholder="What's your question? Be Specific." required>
                             </div>
 
                             <!-- Form Input for Body -->
@@ -39,7 +40,7 @@
                                 <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.key') }}"></div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Post Question</button>
+                            <button type="submit" class="btn btn-primary mr-3">Post Question</button>
                             <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
                         </form>
                     </div>

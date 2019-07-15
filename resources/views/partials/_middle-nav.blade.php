@@ -13,14 +13,14 @@
         </a>
     </li>
 
-    <li class="nav__item px-5 {{ Request::is('users') ? 'nav__item--active' : '' }}">
+    <li class="nav__item px-5 {{ Request::is('users') || Request::is('users/*') ? 'nav__item--active' : '' }}">
         <a href="{{ route('users.index') }}">
 {{--            <i class="fas fa-user nav__item__icon"></i>--}}
             <span class="nav__item__text">Users</span>
         </a>
     </li>
 
-    <li class="nav__item px-5 {{ Request::is('tags') ? 'nav__item--active' : '' }}">
+    <li class="nav__item px-5 {{ Request::is('tags') || Request::is('tags/*') ? 'nav__item--active' : '' }}">
         <a href="{{ route('tags.index') }}">
 {{--            <i class="fas fa-tag nav__item__icon"></i>--}}
             <span class="nav__item__text">Tags</span>
