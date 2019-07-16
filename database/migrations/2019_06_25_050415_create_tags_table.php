@@ -25,8 +25,8 @@ class CreateTagsTable extends Migration
             $table->unsignedBigInteger('tag_id');
             $table->primary(['question_id', 'tag_id']);
 
-            // delete the Pivot table entry if the question or tag is deleted
-            $table->foreign('question_id')->references('id')->on('question_id')->onDelete('cascade');
+            // Delete the Pivot table entry if the question or tag is deleted
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
             $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
         });
     }
