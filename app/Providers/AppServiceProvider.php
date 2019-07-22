@@ -28,6 +28,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
+        if (env('APP_ENV') === 'production') {
+            $this->app['url']->forceScheme('https');
+        }
+
         View::composer('*', function ($view) {
             $hot_questions = (new HotQuestions())->get();
 
