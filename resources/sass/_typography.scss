@@ -1,21 +1,21 @@
 h1 {
-    font-size: 2rem;    // 32px
+    @include font-size(2rem);   // 32px
 }
 
 h2 {
-    font-size: 1.6rem;  //  25.6px
+    @include font-size(1.6rem);  //  25.6px
 }
 
 h3 {
-    font-size: 1.4rem;  // 22.4px
+    @include font-size(1.4rem);  // 22.4px
 }
 
 h4 {
-    font-size: 1.2rem;  // 19.2px
+    @include font-size(1.2rem);  // 19.2px
 }
 
 h5 {
-    font-size: 1rem;    // 16px
+    font-size: 1rem;   // 16px
 }
 
 h6 {

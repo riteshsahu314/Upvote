@@ -1,9 +1,12 @@
 .nav {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
     list-style-type: none;
     padding: 0;
 
     &__item {
-        padding: 0.7rem 1rem;
+        padding: 0 1rem;
         position: relative;
 
         & > a {
@@ -18,18 +21,25 @@
         &__text {
             text-transform: uppercase;
             font-weight: bold;
-            font-size: 0.8rem;
+            font-size: .8rem;
+
+            @include media-breakpoint-down(sm) {
+                & {
+                    font-size: 10px;
+                }
+            }
         }
 
         &--active {
             & span::after {
                 content: "";
-                border-bottom: 5px solid $orange-dark;
-                width: 80px;
-                position: absolute;
-                left: calc(50% - 40px);
-                bottom: 0;
                 display: block;
+                border-bottom: 5px solid $orange-dark;
+                width: 90%;
+                position: absolute;
+                left: 50%;
+                bottom: 0;
+                transform: translate(-50%);
                 border-radius: 1000px;
                 border-bottom-left-radius: 0;
                 border-bottom-right-radius: 0;

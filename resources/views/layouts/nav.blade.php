@@ -1,33 +1,20 @@
-<nav class="main-nav navbar navbar-expand-md navbar-light shadow-sm sticky-top">
-    <div class="container-fluid px-5">
-        <a class="navbar-brand text-uppercase text-white" href="{{ url('/') }}">
-            {{ config('app.name', 'Upvote') }}
-        </a>
-
+<nav class="navigation navbar navbar-expand-md navbar-light shadow-sm sticky-top">
+    <div class="container-fluid px-3 px-sm-5">
+        <div class="logo-box">
+            <a class="navbar-brand text-uppercase text-white" href="{{ url('/') }}">
+                {{ config('app.name', 'Upvote') }}
+            </a>
+        </div>
 
         <div class="d-none d-md-block">
-            @include('partials._middle-nav')
+            @include('partials._sub-nav')
         </div>
 
-
-        <div class="d-md-none">
-            <div class="d-flex align-items-center">
-                <a href="#searchBox" data-toggle="modal" class="text-decoration-none"><i
-                        class="fas fa-search search-icon nav-link"></i></a>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </div>
-
-        <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
-            <ul class="navbar-nav align-items-center">
-                <li class="nav-item">
+        <div class="flex-grow-0">
+            <ul class="nav align-items-center">
+                <li class="nav__item">
                     <a href="#searchBox" data-toggle="modal"><i
-                            class="fas fa-search search-icon p-2"></i></a>
+                            class="fas fa-search search-icon"></i></a>
                 </li>
 
                 <!-- Authentication Links -->
@@ -44,7 +31,7 @@
                     <user-notifications></user-notifications>
 
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white pr-0" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <img src="{{ Auth::user()->avatar_path }}" alt="{{ Auth::user()->name }}" width="30"
                                  height="30" class="rounded-circle"> <span class="caret"></span>
@@ -68,5 +55,9 @@
                 @endguest
             </ul>
         </div>
+    </div>
+
+    <div class="d-block d-md-none w-100">
+        @include('partials._sub-nav')
     </div>
 </nav>

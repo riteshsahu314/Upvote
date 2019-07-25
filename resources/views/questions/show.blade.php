@@ -2,13 +2,29 @@
 
 @section('content')
     <question-view :question="{{ $question }}" inline-template>
-        <div v-cloak class="p-5">
+        <div v-cloak class="main-container">
             <div class="border-bottom mb-3">
                 <input type="text" v-if="editing" v-model="form.title" placeholder="Question Title"
                        class="form-control mb-3">
-                <div v-else class="d-flex justify-content-between align-items-start">
-                    <h1 v-text="title" class="font-weight-normal"></h1>
-                    <a href="{{ route('questions.create') }}" class="btn btn-primary">Ask Question</a>
+                <div v-else class="d-md-flex justify-content-between align-items-start">
+                    <div class="order-2 mb-3 d-flex justify-content-end">
+                        <a href="{{ route('questions.create') }}" class="btn btn-primary text-nowrap">Ask Question</a>
+                    </div>
+                    <div class="mr-3 order-1">
+                        <h1 v-text="title" class="font-weight-normal"></h1>
+                        <div class="mb-2">
+                            <div class="d-flex">
+                                <h6 class="mr-3">
+                                    <span class="text-secondary">Asked:</span>
+                                    <span> {{ $question->created_at->diffForHumans() }}</span>
+                                </h6>
+                                <h6>
+                                    <span class="text-secondary">Viewed:</span>
+                                    <span> {{ $question->view_count }} times</span>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -29,15 +45,7 @@
                     </div>
                 </div>
 
-                <div class="col-3">
-                    <div class="card mb-2">
-                        <div class="card-body text-center">
-                            <h6><span class="text-secondary">Asked:</span> {{ $question->created_at->diffForHumans() }}
-                            </h6>
-                            <h6><span class="text-secondary">Viewed:</span> {{ $question->view_count }} times</h6>
-                        </div>
-                    </div>
-
+                <div class="col-lg-3">
                     @include('partials._hot-questions')
                 </div>
             </div>

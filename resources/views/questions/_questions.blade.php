@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row p-5 mx-0">
-        <div class="col">
+    <div class="row p-2 p-sm-5 mx-0">
+        <div class="col-lg">
             <div class="p-3">
                 @yield('heading')
             </div>
@@ -65,7 +65,7 @@
             @yield('pager')
         </div>
 
-        <div class="col-3">
+        <div class="col-lg-3 pr-0">
             @include('partials._hot-questions')
         </div>
     </div>

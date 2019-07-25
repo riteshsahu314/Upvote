@@ -1,11 +1,11 @@
 // Fonts
-//  TODO: uncomment
-//@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
+$enable-responsive-font-sizes: true;
 @import '~bootstrap/scss/bootstrap';
 
 // Typography
@@ -29,11 +29,31 @@
 
 [v-cloak] {display: none;}
 
-.main-nav {
-    padding: 0 17px 0 0;
-    margin-right: -17px;
+.logo-box {
+    display: flex;
+    justify-content: center;
+
+    @media(max-width:320px) {
+        & {
+            flex-grow: 1;
+        }
+    }
+}
+
+.nav-link {
+    padding: .5rem;
+}
+
+.navigation {
+    padding: 0;
     background-color: #34495e;
     color: white;
+    
+    @include media-breakpoint-down(sm) {
+        & {
+            position: relative;
+        }
+    }
 }
 
 label {
@@ -96,4 +116,21 @@ a {
 .dropdown-menu {
     margin: 0;
     border-radius: 0;
+}
+
+.main-container {
+    padding: 2rem 3rem 3rem 3rem;
+}
+
+.btn {
+    white-space: nowrap;
+}
+
+@include media-breakpoint-down(sm) {
+    .btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.7875rem;
+        line-height: 1.5;
+        border-radius: 0.2rem;
+    }
 }
