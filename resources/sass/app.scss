@@ -41,7 +41,7 @@ $enable-responsive-font-sizes: true;
 }
 
 .nav-link {
-    padding: .5rem;
+    padding: .4rem;
 }
 
 .navigation {
@@ -133,4 +133,8 @@ a {
         line-height: 1.5;
         border-radius: 0.2rem;
     }
+}
+
+.dropdown-toggle::after {
+    vertical-align: middle;
 }

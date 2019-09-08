@@ -33,8 +33,8 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle text-white pr-0" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <img src="{{ Auth::user()->avatar_path }}" alt="{{ Auth::user()->name }}" width="30"
-                                 height="30" class="rounded-circle"> <span class="caret"></span>
+                            <img src="{{ Auth::user()->avatar_path }}" alt="{{ Auth::user()->name }}" width="26"
+                                 height="26" class="rounded-circle"> <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right shadow border" aria-labelledby="navbarDropdown">

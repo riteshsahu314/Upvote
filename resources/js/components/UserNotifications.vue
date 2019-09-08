@@ -64,7 +64,7 @@
      .notification-icon {
          color: white;
          padding: 0.3rem;
-         font-size: 1.3rem;
+         font-size: 1rem;
      }
 
     #notifications {
