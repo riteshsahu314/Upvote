@@ -75,6 +75,7 @@ class LoginController extends Controller
                 $user = User::create([
                     'email' => $providerUser->getEmail(),
                     'name'  => $providerUser->getName(),
+                    'email_verified_at' => now()
                 ]);
             }
 
