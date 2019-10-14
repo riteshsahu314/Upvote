@@ -32,12 +32,18 @@ $enable-responsive-font-sizes: true;
 .logo-box {
     display: flex;
     justify-content: center;
+    align-items: center;
 
     @media(max-width:320px) {
         & {
             flex-grow: 1;
         }
     }
+}
+
+.logo-img {
+    width: 1.3rem;
+    margin-right: .7rem;
 }
 
 .nav-link {
