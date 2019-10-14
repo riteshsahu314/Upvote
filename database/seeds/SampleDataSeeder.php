@@ -34,7 +34,7 @@ class SampleDataSeeder extends Seeder
         Tag::truncate();
 
         // Create sample tags
-        factory(Tag::class, 50)->create();
+        factory(Tag::class, 100)->create();
     }
 
     public function questions()
@@ -48,7 +48,7 @@ class SampleDataSeeder extends Seeder
         // get IDs from tags table
         $tagIds = Tag::pluck('id');
 
-        factory(Question::class, 30)->create()->each(function ($question) use ($tagIds) {
+        factory(Question::class, 300)->create()->each(function ($question) use ($tagIds) {
             // get a random number
             $num = rand(1, 5);
 
@@ -65,7 +65,7 @@ class SampleDataSeeder extends Seeder
         Answer::truncate();
 
         // create sample answers from existing users and questions
-        factory(Answer::class, 60)->states('from_existing_questions_and_users')->create();
+        factory(Answer::class, 600)->states('from_existing_questions_and_users')->create();
     }
 
     public function comments()
@@ -73,10 +73,10 @@ class SampleDataSeeder extends Seeder
         Comment::truncate();
 
         // create sample comments from existing questions and users
-        factory(Comment::class, 60)->states('from_existing_questions_and_users')->create();
+        factory(Comment::class, 500)->states('from_existing_questions_and_users')->create();
 
         // create sample comments from existing answers and users
-        factory(Comment::class, 100)->states('from_existing_answers_and_users')->create();
+        factory(Comment::class, 1000)->states('from_existing_answers_and_users')->create();
     }
 
     public function voteTypes()
