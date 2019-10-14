@@ -6,7 +6,7 @@
         <a href="{{ route('questions.create') }}" class="btn btn-primary">Ask Question</a>
     </div>
     <div class="row justify-content-between">
-        <span class="fs-2 lead">Results for {{ $query }}</span>
+        <span class="fs-2 lead">Results for "{{ $query }}"</span>
         <span class="fs-2">{{ $questions->total() }} questions</span>
     </div>
 @endsection

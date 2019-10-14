@@ -1,5 +1,6 @@
 <?php
 
+use App\Activity;
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -17,6 +18,7 @@ class UsersSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
 
         User::truncate();
+        Activity::truncate();
 
         // create a dev user
         factory(User::class)->create([

@@ -65,3 +65,7 @@ Route::post('/questions/{question}/{type}', 'QuestionVotesController@store')->na
 
 // Answer Votes
 Route::post('/answers/{answer}/{type}', 'AnswerVotesController@store')->name('answers.votes.store');
+
+// Social Login
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');

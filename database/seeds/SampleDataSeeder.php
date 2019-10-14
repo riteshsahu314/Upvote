@@ -2,9 +2,11 @@
 
 use App\Answer;
 use App\Comment;
+use App\Favorite;
 use App\Question;
 use App\Tag;
 use App\User;
+use App\VoteType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -38,6 +40,7 @@ class SampleDataSeeder extends Seeder
     public function questions()
     {
         Question::truncate();
+        Favorite::truncate();
 
         // create sample questions and users
         // to each question associate a random number of tags
@@ -78,6 +81,8 @@ class SampleDataSeeder extends Seeder
 
     public function voteTypes()
     {
+        VoteType::truncate();
+
         DB::table('vote_types')->insert([
             [
                 'name' => 'UpVote'

@@ -138,3 +138,40 @@ a {
 .dropdown-toggle::after {
     vertical-align: middle;
 }
+
+.social__btn {
+    color: #000;
+
+    &--github {
+        color: #333;
+
+        &:hover {
+            color: lighten(#333, 20%);
+            
+        }
+    }
+
+    &--facebook {
+        color: #3b5998;
+
+        &:hover {
+            color: lighten(#3b5998, 20%);
+        }
+    }
+
+    &--google {
+        color: #ea4335;
+
+        &:hover {
+            color: lighten(#ea4335, 10%);
+        }
+    }
+
+    & i, & span {
+        vertical-align: middle;
+    }
+}
+
+.box-shadow {
+    box-shadow: 0px 0px 4px -3px;
+}

@@ -19,6 +19,12 @@ class User extends Authenticatable implements MustVerifyEmail
             $user->favorites->each->delete();
             $user->notifications->each->delete();
         });
+
+        static::created(function($user) {
+            $uniqueName = str_replace(' ', '.', strtolower($user->name)) . '.' . $user->id;
+
+            $user = $user->update(['unique_name' => $uniqueName]);
+        });
     }
 
     /**
@@ -27,7 +33,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar_path'
+        'unique_name', 'name', 'email', 'password', 'avatar_path'
     ];
 
     /**
@@ -57,7 +63,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getRouteKeyName()
     {
-        return 'name';
+        return 'unique_name';
     }
 
     public function isAdmin()
@@ -91,5 +97,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function favorites()
     {
         return $this->hasMany('App\Favorite');
+    }
+
+    public function identities() 
+    {
+        return $this->hasMany('App\SocialIdentity');
     }
 }

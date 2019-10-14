@@ -69,6 +69,36 @@
                             </div>
                         </div>
                     </form>
+
+                    <hr>
+
+                    <div class="text-center row justify-content-center">
+                        <div>
+                            <div class="border px-5 py-2 rounded box-shadow mb-2">
+                                <a href="{{ url('/login/github') }}" class="social__btn social__btn--github">
+                                    <h4 class="m-0">
+                                        <i class="fab fa-lg fa-github mr-3"></i><span>Signup with Github</span>
+                                    </h4>
+                                </a>
+                            </div>
+
+                            <div class="border px-5 py-2 rounded box-shadow mb-2">
+                                <a href="{{ url('/login/google') }}" class="social__btn social__btn--google">
+                                    <h4 class="m-0">
+                                        <i class="fab fa-lg fa-google mr-3"></i><span>Signup with Google</span>
+                                    </h4>
+                                </a>
+                            </div>
+
+                            <div class="border px-5 py-2 rounded box-shadow">
+                                <a href="{{ url('/login/facebook') }}" class="social__btn social__btn--facebook">
+                                    <h4 class="m-0">
+                                        <i class="fab fa-lg fa-facebook mr-3"></i><span>Signup with Facebook</span>
+                                    </h4>
+                                </a>
+                            </div>                                
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
